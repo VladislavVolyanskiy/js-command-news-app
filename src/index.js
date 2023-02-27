@@ -26,7 +26,8 @@ function getPopularNews() {
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url }) => {
           // деструктурував необхідні данні для розмітки.
-          const publishedDate = new Date(published_date);
+        //   
+          const publishedDate = publishedDateFormatter(published_date);
           const sectionName = section;
           const articleTitle = title;
           const shortDescription = abstract;
@@ -57,7 +58,7 @@ function onCategoryClick(evt) {
       data.results.forEach(
         ({ abstract, published_date, section, title, multimedia, url }) => {
           // деструктурував необхідні данні для розмітки.
-          const publishedDate = new Date(published_date);
+          const publishedDate = publishedDateFormatter(published_date);
           const sectionName = section;
           const articleTitle = title;
           const shortDescription = abstract;
@@ -86,7 +87,7 @@ function onSearchInputClick(evt) {
       //   Зверніть увагу дата публікації записана по різному
       ({ abstract, pub_date, section_name, headline, multimedia, web_url }) => {
         // деструктурував необхідні данні для розмітки.
-        const publishedDate = new Date(pub_date);
+        const publishedDate = publishedDateFormatter(pub_date);
         const sectionName = section_name;
         const articleTitle = headline.main;
         const shortDescription = abstract;
@@ -100,4 +101,8 @@ function onSearchInputClick(evt) {
       }
     );
   });
+}
+
+function publishedDateFormatter(date) {
+  return new Date(date).toDateString();
 }
