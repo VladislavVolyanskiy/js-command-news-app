@@ -26,19 +26,18 @@ function getPopularNews() {
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url }) => {
           // деструктурував необхідні данні для розмітки.
-          const publishedDate = published_date;
+          const publishedDate = new Date(published_date);
           const sectionName = section;
           const articleTitle = title;
           const shortDescription = abstract;
           const urlOriginalArticle = url;
-
           //   перевіряемо чи є зображення, де помилка там є відео
           try {
             const imgUrl = media[0]['media-metadata'][2].url;
             //   якщо треба інший розмір картинки
             // console.log(media[0]['media-metadata']);
           } catch (error) {
-            console.log(error);
+            console.log('no image url');
           }
         }
       );
@@ -54,13 +53,11 @@ function onCategoryClick(evt) {
   newsFetchApi.fetchBySection().then(({ data }) => {
     //   загальна кількість знайдених новин
     const totalNews = data.num_results;
-    console.log(data);
     try {
       data.results.forEach(
-        //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, multimedia, url }) => {
           // деструктурував необхідні данні для розмітки.
-          const publishedDate = published_date;
+          const publishedDate = new Date(published_date);
           const sectionName = section;
           const articleTitle = title;
           const shortDescription = abstract;
@@ -89,13 +86,17 @@ function onSearchInputClick(evt) {
       //   Зверніть увагу дата публікації записана по різному
       ({ abstract, pub_date, section_name, headline, multimedia, web_url }) => {
         // деструктурував необхідні данні для розмітки.
-        const publishedDate = pub_date;
+        const publishedDate = new Date(pub_date);
         const sectionName = section_name;
         const articleTitle = headline.main;
         const shortDescription = abstract;
         const urlOriginalArticle = web_url;
-        // Не можу знайти ссилку на зображення
-        // console.log(multimedia);
+        //   перевіряемо чи є зображення, де помилка там є відео
+        try {
+          const imgUrl = 'https://www.nytimes.com/' + multimedia[0].url;
+        } catch (error) {
+          console.log('no image url');
+        }
       }
     );
   });
