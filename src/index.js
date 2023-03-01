@@ -1,4 +1,6 @@
 // треба зробити перевірку чи вибрана дата.
+import fetchWeather from './js/weatherApi';
+
 
 import NewsFetchApi from './js/newsApi';
 
@@ -25,8 +27,7 @@ function getPopularNews() {
       data.results.forEach(
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url }) => {
-          // деструктурував необхідні данні для розмітки.
-        //   
+          // деструктурував необхідні данні для розмітки   
           const publishedDate = publishedDateFormatter(published_date);
           const sectionName = section;
           const articleTitle = title;
