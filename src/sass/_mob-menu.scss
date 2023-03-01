@@ -1,0 +1,16 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+.wrapper {
+    background: $backgroundColorDarkTheme;
+}
+.wrapper__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 16px;
+}
+.wrapper__head-h1 {
+    color: $primaryTextColorDarkTheme;
+}
+.wrapper__head-link {
+    list-style: none;
+}
