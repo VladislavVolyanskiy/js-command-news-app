@@ -12,6 +12,8 @@ p {
     padding: 24px 16px;
     flex-direction: column;
     justify-content: space-between;
+
+    height: 100vw;
 }
 .wrapper__head {
     display: flex;
@@ -109,4 +111,9 @@ p {
     transform: translateX(16px);
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
+    list-style-type: none;
+}
+.wrapper__link-item {
+    height: 32px;
+    width: 100%;
 }
