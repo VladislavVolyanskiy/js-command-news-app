@@ -108,3 +108,14 @@ function publishedDateFormatter(date) {
   return new Date(date).toDateString();
 }
 
+//============= перемикач теми початок ==========
+import { ThemeSwitcher } from './js/themeSwitcher';
+
+const themeSwitcherEl = document.querySelector('.switch_input');
+const themeSwitcher = new ThemeSwitcher(themeSwitcherEl);
+
+themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
+
+themeSwitcher.renderTheme();
+//============= перемикач теми кінець ============
+
