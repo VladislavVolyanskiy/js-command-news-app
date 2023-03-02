@@ -8,7 +8,7 @@ export default class NewsFetchApi {
     this.searchQuery = '';
     this.searchSection = '';
     // період популярних новин можна вибрати 1, 7 або 30 днів
-    this.popularPeriod = 1;
+    this.popularPeriod = 30;
     //   для пагінації за пошуковим словом
     this.page = 0;
     //   для пагінації пошуку за категоріями,  0,20,40,...,500
