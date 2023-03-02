@@ -16,8 +16,11 @@ p {
 
 .bg-color {
     background: $backgroundColorDarkTheme;
+<<<<<<< HEAD
 
     height: 100vh;
+=======
+>>>>>>> parent of a3e5eb8 (update all)
 }
 .wrapper__head {
     display: flex;
@@ -30,7 +33,6 @@ p {
 .wrapper__head-h1 {
     color: $primaryTextColorDarkTheme;
     margin: 0;
-    text-decoration: none;
 }
 .wrapper__link {
     display: flex;
@@ -38,8 +40,11 @@ p {
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
+<<<<<<< HEAD
     flex-direction: column;
 
+=======
+>>>>>>> parent of a3e5eb8 (update all)
     gap: 24px;
 }
 .wrapper__link-item {
