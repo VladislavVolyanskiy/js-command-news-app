@@ -14,11 +14,13 @@ p {
     justify-content: space-between;
 
 }
+.flex {
+    display: flex;
+    align-items: center;
+}
 
 .bg-color {
     background: $backgroundColorDarkTheme;
-
-
     height: 100vh;
 
 }
@@ -35,6 +37,7 @@ p {
     margin: 0;
 }
 .wrapper__link {
+    display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -47,6 +50,8 @@ p {
     display: flex;
     align-items: center;
     max-height: 44px;
+
+    justify-content: space-between;
 }
 .wrapper__link-text {
     color: $primaryTextColorDarkTheme;
