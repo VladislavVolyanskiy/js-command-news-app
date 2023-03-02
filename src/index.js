@@ -108,11 +108,6 @@ function publishedDateFormatter(date) {
   return new Date(date).toDateString();
 }
 
-
-// мобільне меню, для відкриття пошукової строки
-btnSearch.addEventListener("click", onSearchClick);
-
-
 //============= перемикач теми початок ==========
 import { ThemeSwitcher } from './js/themeSwitcher';
 
