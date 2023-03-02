@@ -1,6 +1,7 @@
 // треба зробити перевірку чи вибрана дата.
 
 import NewsFetchApi from './js/newsApi';
+import onSearchClick from './js/header';
 
 const newsFetchApi = new NewsFetchApi();
 
@@ -106,3 +107,7 @@ function onSearchInputClick(evt) {
 function publishedDateFormatter(date) {
   return new Date(date).toDateString();
 }
+
+
+// мобільне меню, для відкриття пошукової строки
+btnSearch.addEventListener("click", onSearchClick);
