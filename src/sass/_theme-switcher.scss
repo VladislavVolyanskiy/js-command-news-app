@@ -1,4 +1,5 @@
 $iconStrokeColor: #5F6775;
+$iconAccentColor: #4B48DB;
 
 body {  
   transition: background-color 0.5s ease, color 0.5s ease; /* Transition effect */
@@ -8,9 +9,8 @@ body {
 
 .sun_btn {
   fill: $backgroundColor;
-  stroke: $accentColor;
+  stroke: $iconAccentColor;
   stroke-width: 1.3;
-  
 }
 
 .moon_btn {
@@ -19,13 +19,19 @@ body {
   stroke-width: 1.3;
 }
 
-
-.search_btn {
-  fill: $backgroundColor;
-  stroke: $iconStrokeColor;
+.switches .text_light {
+  color: $iconAccentColor;
+}
+  
+.switches .text_dark {
+  color: $iconStrokeColor;
 }
 
-// .light {}
+.search_btn {
+  fill: $primaryTextColor;
+  stroke: $primaryTextColor;
+}
+
 
 .dark {
   background-color: $backgroundColorDarkTheme; /* Dark background color */
@@ -50,5 +56,28 @@ body {
 
 .dark .moon_btn {
   fill: $backgroundColorDarkTheme;
-  stroke: $accentColor;
+  stroke: $iconAccentColor;
+}
+
+.dark .switches .text_light{
+  color: $primaryTextColorDarkTheme;
+  opacity: 0.4;
+}
+  
+.dark .switches .text_dark{
+  color: $accentColor;
+}
+
+.dark .search_btn {
+  fill: $backgroundColor;
+  stroke: $backgroundColor;
+}
+
+.dark .search_input {
+  color: $primaryTextColorDarkTheme;
+}
+
+.dark .search_input::placeholder{
+  color: $primaryTextColorDarkTheme;
+  // opacity: 0.4;
 }
