@@ -31,22 +31,24 @@ createWidget();
 async function createWidget() {
   await fetchWeather().then(({ weatherData, city }) => {
     const month = getMonth();
-      const day = getDay();
-      const weekDay = getWeekDay();
+    const day = getDay();
+    const weekDay = getWeekDay();
+    const fullYear = getFullYear();
 
-    const markup = `<p class="temperature">${Math.round(
+    const markup = `
+    <div class="degree-container"><p class="temperature">${Math.round(
       weatherData.data.main.temp
     )}\u00B0</p>
-      <ul class="city">
-        <li>${weatherData.data.weather[0].main}</li>
-        <li>${city}</li>
-      </ul>
-      <img src="http://openweathermap.org/img/wn/${
+      <ul class="city-container">
+        <li class="weather-condition">${weatherData.data.weather[0].main}</li>
+        <li class="weather-city">${city}</li>
+      </ul></div>
+      <img class="weather-icon" src="http://openweathermap.org/img/wn/${
         weatherData.data.weather[0].icon
       }@2x.png" alt="" width="128" height="121">    
-      <p>${weekDay}</p>
-      <p>${day} ${month}</p>
-      <button type="button">weather for week</button>`;
+      <div class="date-container"><p>${weekDay}</p>
+      <p>${day} ${month} ${fullYear}</p>
+      <button class="weatherBtn" type="button">weather for week</button></div>`;
 
     weatherWidgetContainer.innerHTML = markup;
   });
@@ -54,23 +56,19 @@ async function createWidget() {
 
 const date = new Date();
 
+function getFullYear() {
+  return date.getFullYear()
+}
+
 function getDay() {
-    return date.getDate();
-};
+  return date.getDate();
+}
 
 function getWeekDay() {
-    const weekDays = [
-      'Sun',
-      'Mon',
-      'Tue',
-      'Wed',
-      'Thu',
-      'Fri',
-      'Sat',
-    ];
-    return weekDays[date.getDay()]
+  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  return weekDays[date.getDay()];
 }
- 
+
 function getMonth() {
   const months = [
     'January',
