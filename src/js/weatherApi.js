@@ -34,9 +34,9 @@ async function createWidget() {
       const day = getDay();
       const weekDay = getWeekDay();
 
-    const markup = `    <p class="temperature">${Math.round(
+    const markup = `<p class="temperature">${Math.round(
       weatherData.data.main.temp
-    )}</p>
+    )}\u00B0</p>
       <ul class="city">
         <li>${weatherData.data.weather[0].main}</li>
         <li>${city}</li>
