@@ -32,6 +32,14 @@ body {
   stroke: $primaryTextColor;
 }
 
+.menu_mob_btn {
+  color: $primaryTextColor;
+}
+
+.search_mob_btn {
+  color: $primaryTextColor;
+}
+
 
 .dark {
   background-color: $backgroundColorDarkTheme; /* Dark background color */
@@ -80,4 +88,14 @@ body {
 .dark .search_input::placeholder{
   color: $primaryTextColorDarkTheme;
   // opacity: 0.4;
+}
+
+.dark .menu_mob_btn {
+  fill: $primaryTextColorDarkTheme;
+  stroke: $primaryTextColorDarkTheme;
+}
+
+.dark .search_mob_btn {
+  fill: $primaryTextColorDarkTheme;
+  stroke: $primaryTextColorDarkTheme;
 }
