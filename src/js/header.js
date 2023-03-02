@@ -4,9 +4,9 @@ const inputSearch = document.querySelector(".search_input");
 const btn = document.querySelector(".search_btn");
 
 
-btnSearch.addEventListener("click", onClick);
+btnSearch.addEventListener("click", onSearchClick);
 
-function onClick() {
+function onSearchClick() {
     btnSearch.style.display = "none";
     formSearch.style.display = "block";
     inputSearch.style.display = "block";
