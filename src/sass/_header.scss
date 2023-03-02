@@ -177,7 +177,7 @@ body {
     .switch {
         display: inline-block;
         position: relative;
-        width: 38px;
+        width: 40px;
         height: 20px;
         margin: 0 5px;
         display: flex;
@@ -207,8 +207,8 @@ body {
         position: absolute;
         cursor: pointer;
         left: 1px;
-        top: 1px;
-        bottom: 4px;
+        // top: 1px;
+        bottom: 1.5px;
         width: 16px;
         height: 16px;
         border-radius: 50%;
@@ -223,9 +223,9 @@ body {
 
     .switch_input:checked+.switch_slider::before {
         background-color: #FFFFFF;
-        transform: translateX(16px);
-        -webkit-transform: translateX(16px);
-        -ms-transform: translateX(16px);
+        transform: translateX(21px);
+        -webkit-transform: translateX(21px);
+        -ms-transform: translateX(21px);
     }
 
     .switches {
