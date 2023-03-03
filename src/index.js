@@ -3,7 +3,7 @@ import createmarkup from './js/news-card';
 import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
 
-const searchInput = document.querySelector("[name = 'searchQuery']");
+const searchInput = document.querySelector('.search_form');
 const newsFetchApi = new NewsFetchApi();
 
 
@@ -114,9 +114,8 @@ searchInput.addEventListener("submit", onSearchInputClick)
 // приносить дані за пошуковим запитом
 function onSearchInputClick(evt) {
   evt.preventDefault();
-  console.log(searchInput.value);
   // тут треба записати значення пошукового запиту
-  newsFetchApi.searchQuery = searchInput.value;
+  newsFetchApi.searchQuery = evt.target.elements.searchQuery.value;
  
 newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
     //   загальна кількість знайдених новин
