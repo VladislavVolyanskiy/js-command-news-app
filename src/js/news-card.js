@@ -12,7 +12,7 @@ export default function createmarkup({
         <div class="card__search">
             <div>
             <img class="card__image" src="${imgUrl}" alt="${articleTitle}" />
-            <p class="card__job"><span>card-job</span></p>
+            <p class="card__job"><span>card job</span></p>
             <button class="card__favorite">
                 <span>Add to favorite</span>
             </button>
