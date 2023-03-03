@@ -1,13 +1,21 @@
-const oneLi = document.querySelector(".one")
-const twoLi = document.querySelector(".two")
-const treeLi = document.querySelector(".tree")
+// Ниже три кнопки(ссылки)
+const oneLi = document.querySelector(".one") // Home
+const twoLi = document.querySelector(".two") // Favorite
+const treeLi = document.querySelector(".tree") // Read
+// Тут мы добавляем бордер этому svg
 const svgItem = document.querySelector(".svg-item")
+//По нажатию на closeModal модалка (backdrop) закрывается 
+const closeModal = document.querySelector(".close")
+const backdrop = document.querySelector(".backdrop")
+
+
+
 
 // Ссылка Home
 oneLi.addEventListener("click", e => {
     e.preventDefault()
-    if (e.currentTarget === oneLi) {
-        console.log('one')
+    if (e.currentTarget === oneLi) { // Проверка на что нажал пользователь
+        // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.add("bg-color-active")
         twoLi.classList.remove("bg-color-active")
         treeLi.classList.remove("bg-color-active")
@@ -16,8 +24,8 @@ oneLi.addEventListener("click", e => {
 // Ссылка Favorite
 twoLi.addEventListener("click", e => {
     e.preventDefault()
-    if (e.currentTarget === twoLi) {
-        console.log("two")
+    if (e.currentTarget === twoLi) { // Проверка на что нажал пользователь
+        // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active")
         twoLi.classList.add("bg-color-active")
         treeLi.classList.remove("bg-color-active")
@@ -27,11 +35,17 @@ twoLi.addEventListener("click", e => {
 // Ссылка Read
 treeLi.addEventListener("click", e => {
     e.preventDefault()
-    if (e.currentTarget === treeLi) {
-        console.log("tree")
+    if (e.currentTarget === treeLi) { // Проверка на что нажал пользователь
+        // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active")
         twoLi.classList.remove("bg-color-active")
         treeLi.classList.add("bg-color-active")
     }
 
 })
+//--------------Closed modal----------------
+// Тут думаю понятно, просто закрывает модалку
+closeModal.addEventListener("click", e => {
+    backdrop.classList.add("is-hidden")
+})
+
