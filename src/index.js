@@ -1,6 +1,7 @@
 // треба зробити перевірку чи вибрана дата.
 import createmarkup from './js/news-card';
 import NewsFetchApi from './js/newsApi';
+import onSearchClick from './js/header';
 
 
 const newsFetchApi = new NewsFetchApi();
@@ -149,3 +150,16 @@ newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
 function publishedDateFormatter(date) {
   return new Date(date).toDateString();
 }
+
+//============= перемикач теми початок ==========
+import { ThemeSwitcher } from './js/themeSwitcher';
+
+const themeSwitcherEl = document.querySelector('.switch_input');
+const themeSwitcher = new ThemeSwitcher(themeSwitcherEl);
+
+themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
+
+themeSwitcher.renderTheme();
+//============= перемикач теми кінець ============
+
+
