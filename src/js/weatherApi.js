@@ -5,7 +5,6 @@ weatherWidgetContainer = document.querySelector('.weatherWidget');
 
 const svgIcon = `<svg class="city-icon" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2A11.013 11.013 0 0 0 5 13a10.889 10.889 0 0 0 2.216 6.6s.3.395.349.452L16 30l8.439-9.953c.044-.053.345-.447.345-.447l.001-.003A10.885 10.885 0 0 0 27 13A11.013 11.013 0 0 0 16 2Zm0 15a4 4 0 1 1 4-4a4.005 4.005 0 0 1-4 4Z"/><circle cx="16" cy="13" r="4" fill="none"/></svg>`;
 
-
 let latitude = 50.449749;
 let longitude = 30.523718;
 const date = new Date();
@@ -35,9 +34,9 @@ createWidget();
 async function createWidget() {
   await fetchCurrentWeather().then(({ weatherData, city }) => {
     const month = getMonth();
-    const day = getDay();
-    const weekDay = getWeekDay();
-    const fullYear = getFullYear();
+    const day = new Date().toDateString().split(' ')[2];
+    const weekDay = new Date().toDateString().slice(0, 3);
+    const fullYear = new Date().toDateString().split(' ')[3];
     // +36
     const markup = `
     <div class="degree-container"><p class="temperature">${Math.round(
@@ -55,24 +54,16 @@ async function createWidget() {
       <button class="weatherBtn" type="button">weather for week</button></div>`;
 
     weatherWidgetContainer.innerHTML = markup;
-
+    function functionWeekWeather() {
+      onWeatherWeekBtnClick({
+        city,
+        longitude,
+        latitude,
+      });
+    }
     const weatherWeekBtnRef = document.querySelector('.weatherBtn');
-    weatherWeekBtnRef.addEventListener('click', onWeatherWeekBtnClick({city, longitude, latitude}));
+    weatherWeekBtnRef.addEventListener('click', functionWeekWeather);
   });
-}
-
-
-function getFullYear() {
-  return date.getFullYear();
-}
-
-function getDay() {
-  return date.getDate();
-}
-
-function getWeekDay() {
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  return weekDays[date.getDay()];
 }
 
 function getMonth() {
@@ -100,9 +91,27 @@ function getCoordinates() {
   });
 }
 
-async function onWeatherWeekBtnClick({city, longitude, latitude}) {
- const weekData = await axios.get(
-   `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=${APIKEY}`
- );
-  console.log(weekData);
+async function onWeatherWeekBtnClick({ city, longitude, latitude }) {
+  const weekData = await axios.get(
+    `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${APIKEY}`
+  );
+
+  let markupWeek = `<p class="city-weather">${city}</p><ul>`;
+
+  console.log(weekData.data.daily);
+  weekData.data.daily.forEach(day => {
+    const date = new Date(day.dt * 1000);
+    console.log(date);
+
+    markupWeek += `
+
+  <li class="week-day"><p class="weather-week">day: ${Math.round(
+    day.temp.day
+  )}\u00B0</p> <p class="weather-city">night: ${Math.round(
+      day.temp.night
+    )}\u00B0</p></li>
+`;
+  });
+  markupWeek += `</ul>`;
+  weatherWidgetContainer.innerHTML = markupWeek;
 }
