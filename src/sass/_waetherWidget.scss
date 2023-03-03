@@ -5,51 +5,125 @@
   background-color: #4440f7;
   text-align: center;
   color: #ffffff;
+
+  @include tablet {
+    width: 353px;
+    height: 675px;
+  }
+  @include desktop {
+    width: 395px;
+    height: 675px;
+  }
 }
 
 .temperature {
   display: inline-block;
-  margin-left: auto;
+  padding-right: 5px;
 
-  font-size: 55px;
-  line-height: 1.16;
   border-right: 1px solid #ffffff;
+  
+  @include fontShort(55, 64);
+
+    @include tablet {
+   @include fontShort(64, 75);
+   padding-right: 8px;
+  }
+    @include desktop {
+     padding-right: 8px;
+  }
 }
 
 .city-container {
+    
   display: inline-block;
-  margin-left: auto;
- margin-top: 32px;
+  margin-top: 32px;
+  margin-left: 15px;
+  text-align: left;
+
+     @include tablet {
+
+   margin-top: 40px;
+  }
 }
 
 .weather-condition {
-  font-size: 24px;
-  line-height: 1.16;
+  @include fontShort(24, 28);
+  margin-bottom: 5px;
+
+    @include tablet {
+        margin-bottom: 0;
+   @include fontShort(36, 42);
+  }
+
 }
 
 .weather-city {
-  padding: 9px 8px 9px 30px;
+  display: flex;
+  max-width: 110px;
+
+  padding: 9px 8px 9px 8px;
+  align-items: center;
+
   background: rgba(254, 254, 255, 0.3);
   border-radius: 10px;
 
-  font-size: 14px;
-  line-height: 1.14;
+  @include fontShort(14, 16);
+
+    @include tablet {
+   @include fontShort(20, 23);
+   max-width: 150px;
+  }
+}
+
+.city-icon {
+  margin-right: 4px;
+  width: 18px;
+height: 18px;
+
+ @include tablet {
+   width: 27px;
+height: 27px;
+  }
 }
 
 .weather-icon {
   margin-left: auto;
   margin-right: auto;
-margin-top: 40px;
+  margin-top: 22px;
+   @include tablet {
+   width: 251px;
+height: 240px;
+
+margin-top: 30px;
+  }
 }
 
 .date-container {
-margin-top: 18px;
+//   margin-top: 18px;
 
-  font-size: 28px;
-  line-height: 1.18;
+  @include fontShort(28, 33);
   text-align: center;
+  @include tablet {
+     @include fontShort(36, 42);
+ margin-top: 5px;
+  }
+ 
 }
 
 .weatherBtn {
   margin-top: 18px;
+  border: none;
+
+  padding: 8px 14px;
+
+  color: inherit;
+  @include fontShort(16, 19);
+
+  background: rgba(254, 254, 255, 0.3);
+  border-radius: 10px;
+
+  @include tablet {
+     @include fontShort(20, 23);
+ margin-top: 28px;
+  }
 }

@@ -3,10 +3,14 @@ import axios from 'axios';
 const APIKEY = '4fd80105d8d352f05f6ab1b4df3becad';
 weatherWidgetContainer = document.querySelector('.weatherWidget');
 
-async function fetchWeather() {
-  let latitude = 50.449749;
-  let longitude = 30.523718;
+const svgIcon = `<svg class="city-icon" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2A11.013 11.013 0 0 0 5 13a10.889 10.889 0 0 0 2.216 6.6s.3.395.349.452L16 30l8.439-9.953c.044-.053.345-.447.345-.447l.001-.003A10.885 10.885 0 0 0 27 13A11.013 11.013 0 0 0 16 2Zm0 15a4 4 0 1 1 4-4a4.005 4.005 0 0 1-4 4Z"/><circle cx="16" cy="13" r="4" fill="none"/></svg>`;
 
+
+let latitude = 50.449749;
+let longitude = 30.523718;
+const date = new Date();
+
+async function fetchCurrentWeather() {
   try {
     const position = await getCoordinates();
     latitude = position.coords.latitude;
@@ -29,35 +33,37 @@ async function fetchWeather() {
 createWidget();
 
 async function createWidget() {
-  await fetchWeather().then(({ weatherData, city }) => {
+  await fetchCurrentWeather().then(({ weatherData, city }) => {
     const month = getMonth();
     const day = getDay();
     const weekDay = getWeekDay();
     const fullYear = getFullYear();
-
+    // +36
     const markup = `
     <div class="degree-container"><p class="temperature">${Math.round(
       weatherData.data.main.temp
     )}\u00B0</p>
       <ul class="city-container">
         <li class="weather-condition">${weatherData.data.weather[0].main}</li>
-        <li class="weather-city">${city}</li>
+        <li class="weather-city"> ${svgIcon}<p>${city}</p></li>
       </ul></div>
       <img class="weather-icon" src="http://openweathermap.org/img/wn/${
         weatherData.data.weather[0].icon
-      }@2x.png" alt="" width="128" height="121">    
+      }@2x.png" alt="" width="164" height="153">    
       <div class="date-container"><p>${weekDay}</p>
       <p>${day} ${month} ${fullYear}</p>
       <button class="weatherBtn" type="button">weather for week</button></div>`;
 
     weatherWidgetContainer.innerHTML = markup;
+
+    const weatherWeekBtnRef = document.querySelector('.weatherBtn');
+    weatherWeekBtnRef.addEventListener('click', onWeatherWeekBtnClick({city, longitude, latitude}));
   });
 }
 
-const date = new Date();
 
 function getFullYear() {
-  return date.getFullYear()
+  return date.getFullYear();
 }
 
 function getDay() {
@@ -92,4 +98,11 @@ function getCoordinates() {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
+}
+
+async function onWeatherWeekBtnClick({city, longitude, latitude}) {
+ const weekData = await axios.get(
+   `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=${APIKEY}`
+ );
+  console.log(weekData);
 }
