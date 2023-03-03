@@ -12,7 +12,7 @@ export default function createmarkup({
         <div class="card__search">
             <div>
             <img class="card__image" src="${imgUrl}" alt="${articleTitle}" />
-            <p class="card__job"><span>kicker</span></p>
+            <p class="card__job"><span>card-job</span></p>
             <button class="card__favorite">
                 <span>Add to favorite</span>
             </button>
@@ -21,10 +21,13 @@ export default function createmarkup({
             <h2>
                 <span>${sectionName}</span>
             </h2>
+            </div>
+            <div>
             <p class="card__text">
                 <span>${articleTitle}</span>
             </p>
             </div>
+            
             <div>
             <p class="card__data">
                 <span>${publishedDate}</span>

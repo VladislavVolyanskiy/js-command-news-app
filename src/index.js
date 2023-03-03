@@ -54,6 +54,7 @@ function getPopularNews() {
           })
           
         }
+
       );
       console.log("markupAll", markupAll);
       const body = document.querySelector("body");

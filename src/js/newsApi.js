@@ -45,6 +45,7 @@ export default class NewsFetchApi {
     }
   }
 
+  
   fetchBySearchQuery() {
     try {
       return axios.get(
