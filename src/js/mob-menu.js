@@ -2,6 +2,15 @@
 const oneLi = document.querySelector(".one") // Home
 const twoLi = document.querySelector(".two") // Favorite
 const treeLi = document.querySelector(".tree") // Read
+// Ниже кнопки у которых будет добавлять бордер
+const oneBorder = document.querySelector(".item-one") // Svg Home
+const twoBorder = document.querySelector(".item-two") // Svg Favorite
+const treeBorder = document.querySelector(".item-tree") // Svg Read
+
+const rigthSvgOne = document.querySelector(".rigth-one") // SVG " > "
+const rigthSvgTwo = document.querySelector(".rigth-two") // SVG " > "
+const rigthSvgTree = document.querySelector(".rigth-tree") // SVG " > "
+
 // Тут мы добавляем бордер этому svg
 const svgItem = document.querySelector(".svg-item")
 //По нажатию на closeModal модалка (backdrop) закрывается 
@@ -19,6 +28,14 @@ oneLi.addEventListener("click", e => {
         oneLi.classList.add("bg-color-active")
         twoLi.classList.remove("bg-color-active")
         treeLi.classList.remove("bg-color-active")
+        //Добавляет бордер на Svg
+        oneBorder.classList.add("wrapper__link-use")
+        twoBorder.classList.remove("wrapper__link-use")
+        treeBorder.classList.remove("wrapper__link-use")
+        // Plus Svg " > "
+        rigthSvgOne.style.display = "inherit"
+        rigthSvgTwo.style.display = "none"
+        rigthSvgTree.style.display = "none"
     }
 })
 // Ссылка Favorite
@@ -29,6 +46,14 @@ twoLi.addEventListener("click", e => {
         oneLi.classList.remove("bg-color-active")
         twoLi.classList.add("bg-color-active")
         treeLi.classList.remove("bg-color-active")
+        //Добавляет бордер на Svg
+        oneBorder.classList.remove("wrapper__link-use")
+        twoBorder.classList.add("wrapper__link-use")
+        treeBorder.classList.remove("wrapper__link-use")
+        // Plus Svg " > "
+        rigthSvgOne.style.display = "none"
+        rigthSvgTwo.style.display = "inherit"
+        rigthSvgTree.style.display = "none"
     }
 
 })
@@ -40,6 +65,14 @@ treeLi.addEventListener("click", e => {
         oneLi.classList.remove("bg-color-active")
         twoLi.classList.remove("bg-color-active")
         treeLi.classList.add("bg-color-active")
+        //Добавляет бордер на Svg
+        oneBorder.classList.remove("wrapper__link-use")
+        twoBorder.classList.remove("wrapper__link-use")
+        treeBorder.classList.add("wrapper__link-use")
+        // Plus Svg " > "
+        rigthSvgOne.style.display = "none"
+        rigthSvgTwo.style.display = "none"
+        rigthSvgTree.style.display = "inherit"
     }
 
 })

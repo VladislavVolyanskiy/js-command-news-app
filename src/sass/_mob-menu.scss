@@ -78,10 +78,8 @@ p {
     margin-left: 14px;
 }
 .wrapper__link-use {
-    &:active {
-    border: 1px solid red;
-    border-radius: 45px;
-    }
+    border: 1px solid $primaryTextColorDarkTheme;
+    border-radius: 50%;
 }
 
 .bg-color-active  {
@@ -93,6 +91,12 @@ p {
 }
 .svg-rigth {
     height: 12px;
+}
+.rigth-two {
+    display: none;
+}
+.rigth-tree {
+    display: none;
 }
 .wrapper__button {
     display: flex;
