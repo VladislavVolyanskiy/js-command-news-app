@@ -3,11 +3,13 @@ import createmarkup from './js/news-card';
 import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
 
-
+const searchInput = document.querySelector("[name = 'searchQuery']");
 const newsFetchApi = new NewsFetchApi();
 
+
 // приносить список тем
-function getSectionList() {
+function getSectionList(e) {
+  e.preventDefault();
   newsFetchApi.fetchSectionList().then(({ data: { results } }) => {
     results.forEach(({ section, display_name }) => {
       // деструктурував необхідні данні для розмітки.
@@ -56,7 +58,6 @@ function getPopularNews() {
           
         }
       );
-      console.log("markupAll", markupAll);
       const body = document.querySelector("body");
     body.insertAdjacentHTML("beforeend", markupAll);
     })
@@ -66,6 +67,7 @@ function getPopularNews() {
 // приносить дані новиин по категоріям
 
 function onCategoryClick(evt) {
+  evt.preventDefault();
   // тут треба записати значення обраної категорії з події на яку кнопку клацнули
   newsFetchApi.searchSection = 'business';
 
@@ -108,12 +110,14 @@ function onCategoryClick(evt) {
     }
   });
 }
-
+searchInput.addEventListener("submit", onSearchInputClick)
 // приносить дані за пошуковим запитом
 function onSearchInputClick(evt) {
+  evt.preventDefault();
+  console.log(searchInput.value);
   // тут треба записати значення пошукового запиту
-  newsFetchApi.searchQuery = 'GPT';
-
+  newsFetchApi.searchQuery = searchInput.value;
+ 
 newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
     //   загальна кількість знайдених новин
     const totalNews = response.meta.hits;
