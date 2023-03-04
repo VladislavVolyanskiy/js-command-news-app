@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="~node_modules/modern-normalize/modern-normalize.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="backdrop">
+      <div class="wrapper">
+        <div>
+          <div class="wrapper__head">
+            <a href=""><h1 class="wrapper__head-h1">News</h1></a>
+            <svg width="24" heigth="24" class="svg-item close">
+              <use
+                href="/src/images/symbol-defs.svg#icon-x"
+                width="24"
+                heigth="24"
+              ></use>
+            </svg>
+          </div>
+          <ul class="wrapper__link">
+            <a href="" class="one bg-color-active">
+              <li class="wrapper__link-item" data-state="true">
+                <div class="flex">
+                  <div class="wrapper__link-use item-one">
+                    <svg width="32" heigth="32" class="svg-item">
+                      <use
+                        href="/src/images/symbol-defs.svg#icon-icon-home"
+                        width="32"
+                        heigth="32"
+                        class="svg-item"
+                      ></use>
+                    </svg>
+                  </div>
+                  <p class="wrapper__link-text">Home</p>
+                </div>
+
+                <svg width="24" heigth="24" class="svg-rigth rigth-one">
+                  <use
+                    href="/src/images/symbol-defs.svg#icon-Vector-right"
+                    width="24"
+                    heigth="24"
+                    class="svg-item"
+                  ></use>
+                </svg>
+              </li>
+            </a>
+            <a href="" class="two">
+              <li class="wrapper__link-item" data-state="true">
+                <div class="flex">
+                  <div class="item-two">
+                    <svg width="32" heigth="32" class="svg-item">
+                      <use
+                        href="/src/images/symbol-defs.svg#icon-icon-heart"
+                        width="32"
+                        heigth="32"
+                      ></use>
+                    </svg>
+                  </div>
+                  <p class="wrapper__link-text">Favorite</p>
+                </div>
+
+                <svg width="24" heigth="24" class="svg-rigth rigth-two">
+                  <use
+                    href="/src/images/symbol-defs.svg#icon-Vector-right"
+                    width="24"
+                    heigth="24"
+                    class="svg-item"
+                  ></use>
+                </svg>
+              </li>
+            </a>
+            <a href="" class="tree">
+              <li class="wrapper__link-item" data-state="false">
+                <div class="flex">
+                  <div class="item-tree">
+                    <svg width="32" heigth="32" class="svg-item">
+                      <use
+                        href="/src/images/symbol-defs.svg#icon-icon-book"
+                        width="32"
+                        heigth="32"
+                      ></use>
+                    </svg>
+                  </div>
+                  <p class="wrapper__link-text">Read</p>
+                </div>
+
+                <svg width="24" heigth="24" class="svg-rigth rigth-tree">
+                  <use
+                    href="/src/images/symbol-defs.svg#icon-Vector-right"
+                    width="24"
+                    heigth="24"
+                    class="svg-item"
+                  ></use>
+                </svg>
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div class="wrapper__button">
+          <svg width="21" heigth="21">
+            <use
+              href="/src/images/symbol-defs.svg#icon-Sun"
+              width="21"
+              heigth="21"
+            ></use>
+          </svg>
+          <label class="switch">
+            <input type="checkbox" class="switch_input" />
+            <span class="switch_slider"></span>
+          </label>
+          <svg width="21" heigth="21">
+            <use
+              href="/src/images/symbol-defs.svg#icon-Moon"
+              width="21"
+              heigth="21"
+            ></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <script src="/src/js/mob-menu.js"></script>
+  </body>
+</html>

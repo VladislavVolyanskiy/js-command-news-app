@@ -1,0 +1,169 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+body {
+    
+}
+a {
+    text-decoration: none;
+}
+p {
+    margin: 0;
+}
+.backdrop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: opacity 300ms linear, visibility 300ms linear;
+}
+// Просто давай этот класс если хочешь спрятать модалку
+.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.wrapper {
+    display: flex;
+    background: $backgroundColorDarkTheme;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+
+.bg-color {
+    background: $backgroundColorDarkTheme;
+    height: 100vh;
+
+}
+.wrapper__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 33px;
+    margin-bottom: 68px;
+    padding: 24px 16px 0px 16px;
+}
+.wrapper__head-h1 {
+    color: $primaryTextColorDarkTheme;
+    margin: 0;
+}
+.wrapper__link {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    
+    gap: 24px;
+
+}
+.wrapper__link-item {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 16px;
+
+    justify-content: space-between;
+}
+.wrapper__link-text {
+    color: $primaryTextColorDarkTheme;
+    padding: 0;
+    margin-left: 14px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.86px;
+}
+.wrapper__link-use {
+    display: flex;
+    border: 1px solid $primaryTextColorDarkTheme;
+    border-radius: 50%;
+}
+
+.bg-color-active  {
+    background-color: $accentColor;
+    
+}
+.svg-item {
+    height: 32px;
+}
+.svg-rigth {
+    height: 12px;
+}
+.rigth-two {
+    display: none;
+}
+.rigth-tree {
+    display: none;
+}
+.wrapper__button {
+    display: flex;
+    justify-content: flex-start;
+    height: 21px;
+
+    padding-left: 16px;
+    margin-bottom: 18px;
+}
+
+//---------------Button + Label
+.switch {
+    display: inline-block;
+    position: relative;
+    width: 38px;
+    height: 20px;
+    margin: 0 10px;
+    display: flex;
+}
+
+.switch_input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.switch_slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    border: 0.604701px solid #4B48DB;
+    transition: 0.4s;
+}
+
+.switch_slider::before {
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    left: 1px;
+    top: 1px;
+    bottom: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #4B48DB;
+    ;
+    transition: 0.4s;
+}
+
+.switch_input:checked+.switch_slider {
+    background-color: #4440F7;
+}
+
+.switch_input:checked+.switch_slider::before {
+    background-color: #FFFFFF;
+    transform: translateX(16px);
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    list-style-type: none;
+}
