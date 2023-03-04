@@ -42,7 +42,7 @@ export default async function createWidget(weatherWidgetContainer) {
       });
     }
     const weatherWeekBtnRef = document.querySelector('.weatherBtn');
-    weatherWeekBtnRef.addEventListener('click', onWeatherWeekBtnClick());
+    weatherWeekBtnRef.addEventListener('click', onWeatherWeekBtnClick);
   });
 }
 
@@ -119,6 +119,7 @@ async function fetchWeekWeather({
     )}\u00B0  </p></li>`;
   });
   markupWeek += `</ul> <button class="weatherBtn" type="button">current weather</button></div>`;
+  
   weatherWidgetContainer.innerHTML = markupWeek;
 
   const weatherCurrentBtnRef = document.querySelector('.weatherBtn');

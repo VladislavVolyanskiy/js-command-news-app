@@ -21,6 +21,8 @@ let shortDescription = '';
 let urlOriginalArticle = '';
 let imgUrl = '';
 let totalNews = '';
+let resultsArr = '';
+let numberOfCard = 0;
 
 // приносить список тем
 function getSectionList(e) {
@@ -44,11 +46,9 @@ function getPopularNews() {
     .then(({ data }) => {
       //   загальна кількість знайдених новин
       totalNews = data.num_results;
-      const resultsArr = data.results;
+      resultsArr = data.results;
 
-      let numberOfCard = 0;
-      // нет новостей или одна штука?
-
+      
       data.results.forEach(
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url, id }) => {
@@ -87,32 +87,16 @@ function getPopularNews() {
       );
       body.insertAdjacentHTML('beforeend', markupAll);
 
+      // Блок добавления погоды
       let weatherWidgetContainer = document.querySelector('.weatherWidget');
 
       createWidget(weatherWidgetContainer);
-    
+      // Конец. Блок добавления погоды
 
-      // Начало. Проверка на клик по Добавить в избранное
+      // Слушатель на клик по Добавить в избранное
       body.addEventListener('click', onAddToFavoritesClick);
-
-      function onAddToFavoritesClick(evt) {
-        if (
-          evt.target.nodeName === 'SPAN' ||
-          evt.target.className === 'card__favorite'
-        ) {
-          const clickedArticleId = evt.target.closest('.card__search')?.id;
-          setFavoritesInLocalStor({
-            resultsArr,
-            clickedArticleId,
-          });
-        }
-      }
-   
-      // Конец. Проверка на клик по Добавить в избранное
-      
     })
     .catch(error => console.log(error));
-
 }
 
 // приносить дані новин по категоріям
@@ -241,3 +225,31 @@ themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
 
 themeSwitcher.renderTheme();
 //============= перемикач теми кінець ============
+
+// начало. возврат ширины окна пользователя
+function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+// конец.возврат ширины окна пользователя
+
+// Начало. Проверка на клик по Добавить в избранное
+function onAddToFavoritesClick(evt) {
+  if (
+    evt.target.nodeName === 'SPAN' ||
+    evt.target.className === 'card__favorite'
+  ) {
+    const clickedArticleId = evt.target.closest('.card__search')?.id;
+    setFavoritesInLocalStor({
+      resultsArr,
+      clickedArticleId,
+    });
+  }
+}
+
+// Конец. Проверка на клик по Добавить в избранное
