@@ -3,6 +3,7 @@ import createmarkup from './js/news-card';
 import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
+import createWidget from './js/weatherApi';
 
 const body = document.querySelector('body');
 const searchInput = document.querySelector('.search_form');
