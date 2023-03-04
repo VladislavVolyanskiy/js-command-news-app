@@ -13,9 +13,6 @@ const rigthSvgTree = document.querySelector(".rigth-tree") // SVG " > "
 
 // Тут мы добавляем бордер этому svg
 const svgItem = document.querySelector(".svg-item")
-//По нажатию на closeModal модалка (backdrop) закрывается 
-const closeModal = document.querySelector(".close")
-const backdrop = document.querySelector(".backdrop")
 
 
 
@@ -78,7 +75,15 @@ treeLi.addEventListener("click", e => {
 })
 //--------------Closed modal----------------
 // Тут думаю понятно, просто закрывает модалку
+const closeModal = document.querySelector(".close")
+const backdrop = document.querySelector(".backdrop")
+
 closeModal.addEventListener("click", e => {
     backdrop.classList.add("is-hidden")
 })
+// Open modal
+const modal = document.querySelector(".menu_mob_btn")
 
+modal.addEventListener("click", e => {
+    backdrop.classList.remove("is-hidden")
+})
