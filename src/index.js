@@ -2,10 +2,10 @@
 import createmarkup from './js/news-card';
 import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
+import { ThemeSwitcher } from './js/themeSwitcher';
 
 const body = document.querySelector('body');
 const searchInput = document.querySelector('.search_form');
-let addFavoritesBtn = document.querySelector('.card__favorite');
 const newsFetchApi = new NewsFetchApi();
 
 const STORAGE_FAVORITES_KEY = 'favorites';
@@ -41,7 +41,6 @@ function getPopularNews() {
   newsFetchApi
     .fetchPopularNews()
     .then(({ data }) => {
-      console.log(data);
       //   загальна кількість знайдених новин
       totalNews = data.num_results;
       const resultsArr = data.results;
@@ -78,7 +77,6 @@ function getPopularNews() {
           });
         }
       );
-
       body.insertAdjacentHTML('beforeend', markupAll);
 
       // Начало. Проверка на клик по Добавить в избранное
@@ -89,7 +87,7 @@ function getPopularNews() {
           evt.target.nodeName === 'SPAN' ||
           evt.target.className === 'card__favorite'
         ) {
-          const clickedArticleId = evt.target.closest('.card__search').id;
+          const clickedArticleId = evt.target.closest('.card__search')?.id;
           setFavoritesInLocalStor({
             resultsArr,
             clickedArticleId,
@@ -205,22 +203,21 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
         delete savedData[`${clickedArticleId}`];
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
+        console.log(savedData);
         return;
       } else {
-        console.log(savedData);
         savedData[clickedArticleId] = article;
 
-        console.log(savedData[clickedArticleId]);
-
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
+        console.log(savedData);
       }
     }
+
   });
 }
 //== добавляет избранное в локальное хранилище. конец ==========
 
 //============= перемикач теми початок ==========
-import { ThemeSwitcher } from './js/themeSwitcher';
 
 const themeSwitcherEl = document.querySelector('.switch_input');
 const themeSwitcher = new ThemeSwitcher(themeSwitcherEl);
