@@ -5,7 +5,6 @@ import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
 import createWidget from './js/weatherApi';
 
-
 const body = document.querySelector('body');
 const searchInput = document.querySelector('.search_form');
 const newsFetchApi = new NewsFetchApi();
@@ -47,9 +46,15 @@ function getPopularNews() {
       totalNews = data.num_results;
       const resultsArr = data.results;
 
+      let numberOfCard = 0;
+      // нет новостей или одна штука?
+
       data.results.forEach(
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url, id }) => {
+          if (numberOfCard === 0) {
+            markupAll += '<div class="weatherWidget"></div>';
+          }
           // деструктурував необхідні данні для розмітки
           articleId = id;
           publishedDate = publishedDateFormatter(published_date);
@@ -77,9 +82,15 @@ function getPopularNews() {
             imgUrl,
             articleId,
           });
+          numberOfCard += 1;
         }
       );
       body.insertAdjacentHTML('beforeend', markupAll);
+
+      let weatherWidgetContainer = document.querySelector('.weatherWidget');
+
+      createWidget(weatherWidgetContainer);
+    
 
       // Начало. Проверка на клик по Добавить в избранное
       body.addEventListener('click', onAddToFavoritesClick);
@@ -96,12 +107,15 @@ function getPopularNews() {
           });
         }
       }
+   
       // Конец. Проверка на клик по Добавить в избранное
+      
     })
     .catch(error => console.log(error));
+
 }
 
-// приносить дані новиин по категоріям
+// приносить дані новин по категоріям
 
 function onCategoryClick(evt) {
   evt.preventDefault();
@@ -214,7 +228,6 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
         console.log(savedData);
       }
     }
-
   });
 }
 //== добавляет избранное в локальное хранилище. конец ==========
