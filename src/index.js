@@ -5,6 +5,7 @@ import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
 import createWidget from './js/weatherApi';
 
+
 const body = document.querySelector('body');
 const searchInput = document.querySelector('.search_form');
 const newsFetchApi = new NewsFetchApi();
