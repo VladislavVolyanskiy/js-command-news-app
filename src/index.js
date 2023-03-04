@@ -5,6 +5,7 @@ import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
 import createWidget from './js/weatherApi';
 
+const newsContainerRef = document.querySelector('.news_container');
 const body = document.querySelector('body');
 const searchInput = document.querySelector('.search_form');
 const newsFetchApi = new NewsFetchApi();
@@ -47,54 +48,59 @@ function getPopularNews() {
       //   загальна кількість знайдених новин
       totalNews = data.num_results;
       resultsArr = data.results;
+// проверка если нету новостей.
+      if (resultsArr.length === 0) {
+        document.querySelector('.without-news_container').style.display = "block";
+      }
+    else
+      {
+        data.results.forEach(
+          //   Зверніть увагу дата публікації записана по різному
+          ({ abstract, published_date, section, title, media, url, id }) => {
+            if (numberOfCard === 0) {
+              markupAll += '<div class="weatherWidget"></div>';
+            }
+            // деструктурував необхідні данні для розмітки
+            articleId = id;
+            publishedDate = publishedDateFormatter(published_date);
+            sectionName = section;
+            articleTitle = title;
+            shortDescription = abstract;
+            urlOriginalArticle = url;
 
-      
-      data.results.forEach(
-        //   Зверніть увагу дата публікації записана по різному
-        ({ abstract, published_date, section, title, media, url, id }) => {
-          if (numberOfCard === 0) {
-            markupAll += '<div class="weatherWidget"></div>';
+            //   перевіряемо чи є зображення, де помилка там є відео
+            try {
+              imgUrl = media[0]['media-metadata'][2].url;
+
+              //   якщо треба інший розмір картинки
+              // console.log(media[0]['media-metadata']);
+            } catch (error) {
+              imgUrl = 'Тут ссылку на заглушку';
+            }
+
+            markupAll += createmarkup({
+              publishedDate,
+              sectionName,
+              articleTitle,
+              shortDescription,
+              urlOriginalArticle,
+              imgUrl,
+              articleId,
+            });
+            numberOfCard += 1;
           }
-          // деструктурував необхідні данні для розмітки
-          articleId = id;
-          publishedDate = publishedDateFormatter(published_date);
-          sectionName = section;
-          articleTitle = title;
-          shortDescription = abstract;
-          urlOriginalArticle = url;
+        );
+        newsContainerRef.insertAdjacentHTML('beforeend', markupAll);
 
-          //   перевіряемо чи є зображення, де помилка там є відео
-          try {
-            imgUrl = media[0]['media-metadata'][2].url;
+        // Блок добавления погоды
+        let weatherWidgetContainer = document.querySelector('.weatherWidget');
 
-            //   якщо треба інший розмір картинки
-            // console.log(media[0]['media-metadata']);
-          } catch (error) {
-            imgUrl = 'Тут ссылку на заглушку';
-          }
+        createWidget(weatherWidgetContainer);
+        // Конец. Блок добавления погоды
 
-          markupAll += createmarkup({
-            publishedDate,
-            sectionName,
-            articleTitle,
-            shortDescription,
-            urlOriginalArticle,
-            imgUrl,
-            articleId,
-          });
-          numberOfCard += 1;
-        }
-      );
-      body.insertAdjacentHTML('beforeend', markupAll);
-
-      // Блок добавления погоды
-      let weatherWidgetContainer = document.querySelector('.weatherWidget');
-
-      createWidget(weatherWidgetContainer);
-      // Конец. Блок добавления погоды
-
-      // Слушатель на клик по Добавить в избранное
-      body.addEventListener('click', onAddToFavoritesClick);
+        // Слушатель на клик по Добавить в избранное
+        body.addEventListener('click', onAddToFavoritesClick);
+      }
     })
     .catch(error => console.log(error));
 }
