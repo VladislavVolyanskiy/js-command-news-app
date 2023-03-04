@@ -4,12 +4,12 @@ export default function createmarkup({
   articleTitle,
   shortDescription,
   urlOriginalArticle,
-  imgUrl,
+  imgUrl, articleId
 }) {
   // const cardItems = data.map(({ publishedDate, sectionName, articleTitle, urlOriginalArticle, imgUrl }) => {
   let cardItems = '';
   return (cardItems = `
-        <div class="card__search">
+        <div class="card__search" id="${articleId}">
             <div>
             <img class="card__image" src="${imgUrl}" alt="${articleTitle}" />
             <p class="card__job"><span>card job</span></p>
