@@ -18,7 +18,9 @@ function getSectionList(e) {
     });
   });
 }
-getPopularNews()
+
+getPopularNews();
+
 // приносить дані популярних новин
 function getPopularNews() {
   newsFetchApi
@@ -26,7 +28,7 @@ function getPopularNews() {
     .then(({ data }) => {
       //   загальна кількість знайдених новин
       const totalNews = data.num_results;
-      let markupAll = "";
+      let markupAll = '';
       data.results.forEach(
         //   Зверніть увагу дата публікації записана по різному
         ({ abstract, published_date, section, title, media, url }) => {
@@ -48,18 +50,18 @@ function getPopularNews() {
           }
 
           markupAll += createmarkup({
-              publishedDate,
-              sectionName,
-              articleTitle,
-              shortDescription,
-              urlOriginalArticle,
-              imgUrl
-          })
-          
+            publishedDate,
+            sectionName,
+            articleTitle,
+            shortDescription,
+            urlOriginalArticle,
+            imgUrl,
+          });
         }
       );
-      const body = document.querySelector("body");
-    body.insertAdjacentHTML("beforeend", markupAll);
+      const body = document.querySelector('body');
+      body.insertAdjacentHTML('beforeend', markupAll);
+
     })
     .catch(error => console.log(error));
 }
@@ -110,14 +112,15 @@ function onCategoryClick(evt) {
     }
   });
 }
-searchInput.addEventListener("submit", onSearchInputClick)
+searchInput.addEventListener('submit', onSearchInputClick);
+
 // приносить дані за пошуковим запитом
 function onSearchInputClick(evt) {
   evt.preventDefault();
   // тут треба записати значення пошукового запиту
   newsFetchApi.searchQuery = evt.target.elements.searchQuery.value;
- 
-newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
+  newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
+
     //   загальна кількість знайдених новин
     const totalNews = response.meta.hits;
     console.log(response);
@@ -164,5 +167,4 @@ themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
 
 themeSwitcher.renderTheme();
 //============= перемикач теми кінець ============
-
 
