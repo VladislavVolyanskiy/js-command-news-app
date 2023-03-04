@@ -6,6 +6,7 @@ import onSearchClick from './js/header';
 const searchInput = document.querySelector('.search_form');
 const newsFetchApi = new NewsFetchApi();
 
+
 // приносить список тем
 function getSectionList(e) {
   e.preventDefault();
@@ -17,7 +18,9 @@ function getSectionList(e) {
     });
   });
 }
+
 getPopularNews();
+
 // приносить дані популярних новин
 function getPopularNews() {
   newsFetchApi
@@ -58,6 +61,7 @@ function getPopularNews() {
       );
       const body = document.querySelector('body');
       body.insertAdjacentHTML('beforeend', markupAll);
+
     })
     .catch(error => console.log(error));
 }
@@ -109,13 +113,14 @@ function onCategoryClick(evt) {
   });
 }
 searchInput.addEventListener('submit', onSearchInputClick);
+
 // приносить дані за пошуковим запитом
 function onSearchInputClick(evt) {
   evt.preventDefault();
   // тут треба записати значення пошукового запиту
   newsFetchApi.searchQuery = evt.target.elements.searchQuery.value;
-
   newsFetchApi.fetchBySearchQuery().then(({ data: { response } }) => {
+
     //   загальна кількість знайдених новин
     const totalNews = response.meta.hits;
     console.log(response);
@@ -162,3 +167,4 @@ themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
 
 themeSwitcher.renderTheme();
 //============= перемикач теми кінець ============
+

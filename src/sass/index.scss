@@ -1,6 +1,12 @@
 @import './reset';
 
 @import './common';
+
+@import './header';
+
 @import './mixins';
 @import './waetherWidget';
 
+@import './news-card';
+
+@import './theme-switcher'
