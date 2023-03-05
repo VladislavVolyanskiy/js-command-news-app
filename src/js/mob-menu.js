@@ -19,7 +19,7 @@ const svgItem = document.querySelector(".svg-item")
 
 // Ссылка Home
 oneLi.addEventListener("click", e => {
-    e.preventDefault()
+    
     if (e.currentTarget === oneLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.add("bg-color-active", "mob-link--color-active")
@@ -37,7 +37,7 @@ oneLi.addEventListener("click", e => {
 })
 // Ссылка Favorite
 twoLi.addEventListener("click", e => {
-    e.preventDefault()
+    
     if (e.currentTarget === twoLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active", "mob-link--color-active")
@@ -56,7 +56,7 @@ twoLi.addEventListener("click", e => {
 })
 // Ссылка Read
 treeLi.addEventListener("click", e => {
-    e.preventDefault()
+
     if (e.currentTarget === treeLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active", "mob-link--color-active")
