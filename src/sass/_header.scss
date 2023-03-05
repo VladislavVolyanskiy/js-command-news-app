@@ -67,7 +67,7 @@ body {
     font-weight: 700;
     font-size: 24px;
     line-height: 1.38;
-    color: $primaryTextColor;
+    // color: $primaryTextColor;
     margin-right: 5px;
 }
 
@@ -122,9 +122,9 @@ body {
         display: flex;
     }
 
-    .link {
-        color: $primaryTextColor;
-    }
+    // .link {
+    //     color: $primaryTextColor;
+    // }
 
     .logo {
         font-size: 32px;
@@ -272,6 +272,7 @@ body {
         font-size: 42px;
         line-height: 1.36;
         margin-right: 102px;
+        
     }
 
     .nav_item {
