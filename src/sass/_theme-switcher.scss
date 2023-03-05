@@ -7,13 +7,15 @@ body {
   color: $primaryTextColor; /* Default text color */
 }
 
-.sun_btn {
+.sun_btn,
+.sun_btn--mobile {
   fill: $backgroundColor;
   stroke: $iconAccentColor;
   stroke-width: 1.3;
 }
 
-.moon_btn {
+.moon_btn,
+.moon_btn--mobile {
   fill: $backgroundColor;
   stroke: $iconStrokeColor;
   stroke-width: 1.3;
@@ -77,15 +79,27 @@ body {
   color: $primaryTextColorDarkTheme;
 }
 
-.dark .sun_btn {
+.dark .sun_btn,
+.dark .sun_btn--mobile {
   fill: $backgroundColorDarkTheme;
   stroke: $iconStrokeColor;
 }
 
-.dark .moon_btn {
+// .dark .sun_btn--mobile {
+//   fill: $backgroundColorDarkTheme;
+//   stroke: $iconStrokeColor;
+// }
+
+.dark .moon_btn,
+.dark .moon_btn--mobile  {
   fill: $backgroundColorDarkTheme;
   stroke: $iconAccentColor;
 }
+
+// .dark .moon_btn--mobile {
+//   fill: $iconStrokeColor;
+//   stroke: $backgroundColorDarkTheme;
+// }
 
 .dark .switches .text_light{
   color: $primaryTextColorDarkTheme;
