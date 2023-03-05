@@ -105,7 +105,7 @@ function onBackYear() {
 
 
 
-mainAsync = async () => {
+ async function mainAsync() {
     const data = new Date(Number(year.textContent), months.indexOf(month.textContent));
 
     const mayDates = await calendarDates.getDates(data);

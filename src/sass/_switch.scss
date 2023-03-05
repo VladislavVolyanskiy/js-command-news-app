@@ -7,7 +7,8 @@
     display: flex;
 }
 
-.switch_input {
+.switch_input,
+.switch_input--mobile {
     height: 0;
     width: 0;
     opacity: 0;
@@ -41,14 +42,15 @@
     transition: 0.4s;
 }
 
+.switch_input--mobile:checked+.switch_slider,
 .switch_input:checked+.switch_slider {
     background-color: #4440F7;
 }
 
+.switch_input--mobile:checked+.switch_slider::before,
 .switch_input:checked+.switch_slider::before {
     background-color: #FFFFFF;
     transform: translateX(21px);
     -webkit-transform: translateX(21px);
     -ms-transform: translateX(21px);
-
 }

@@ -1,6 +1,7 @@
 export class ThemeSwitcher {
-    constructor(element) {
-      this.themeSwitcherEl = element;
+    constructor(deskSwitchEl, mobSwitchEl) {
+      this.themeSwitcherEl = deskSwitchEl;
+      this.mobileSwitcherEl = mobSwitchEl;
       this.THEME_STORAGE_KEY = 'theme';
       this.Theme = {
         LIGHT: 'light',
@@ -28,6 +29,7 @@ export class ThemeSwitcher {
   
       if (!isLightTheme) {
         this.themeSwitcherEl.setAttribute('checked', true);
+        this.mobileSwitcherEl.setAttribute('checked', true);
         this.changeBodyClass(this.Theme.DARK, this.Theme.LIGHT);
       }
   
