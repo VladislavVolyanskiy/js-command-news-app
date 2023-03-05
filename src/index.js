@@ -344,3 +344,16 @@ function onAddToFavoritesClick(evt) {
 }
 
 // Конец. Проверка на клик по Добавить в избранное
+
+
+//=== test of currentPage on header navigation
+let currentPage = document.body.getAttribute('data-current-page')
+console.log(currentPage)
+if (currentPage === "index") {
+  document.querySelector('[href="./index.html"]').classList.add('nav_link--current');  
+} else if (currentPage === "favorite") {
+  document.querySelector('[href="./favorite.html"]').classList.add('nav_link--current');  
+} else if (currentPage === "read") {
+  document.querySelector('[href="./read.html"]').classList.add('nav_link--current');  
+}
+//=== end of currentPage test
