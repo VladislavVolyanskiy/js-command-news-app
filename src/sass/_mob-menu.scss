@@ -24,7 +24,7 @@ p {
 }
 .wrapper {
     display: flex;
-    background: $backgroundColorDarkTheme;
+    background: $backgroundColor;
     flex-direction: column;
     justify-content: space-between;
 
@@ -38,7 +38,7 @@ p {
 
 
 .bg-color {
-    background: $backgroundColorDarkTheme;
+    background: $backgroundColor;
     height: 100vh;
 
 }
@@ -51,7 +51,7 @@ p {
     padding: 24px 16px 0px 16px;
 }
 .wrapper__head-h1 {
-    color: $primaryTextColorDarkTheme;
+    color: $primaryTextColor;
     margin: 0;
 }
 .wrapper__link {
@@ -73,7 +73,7 @@ p {
     justify-content: space-between;
 }
 .wrapper__link-text {
-    color: $primaryTextColorDarkTheme;
+    color: inherit;
     padding: 0;
     margin-left: 14px;
 
@@ -91,6 +91,11 @@ p {
     background-color: $accentColor;
     
 }
+
+.mob-link--color-active {
+    color: $primaryTextColorDarkTheme;
+}
+
 .svg-item {
     height: 32px;
 }

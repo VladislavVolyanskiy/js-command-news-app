@@ -32,14 +32,34 @@ body {
   stroke: $primaryTextColor;
 }
 
+.wrapper__head {
+  stroke: $primaryTextColor;
+  fill: $primaryTextColor;
+}
+
 .menu_mob_btn {
   color: $primaryTextColor;
+  fill: $primaryTextColor;
+  stroke: $primaryTextColor;
 }
 
 .search_mob_btn {
   color: $primaryTextColor;
 }
 
+.dark .backdrop {
+  background-color: $backgroundColorDarkTheme;
+}
+
+// .mob-menu__wrapper {
+//   color: $primaryTextColor;
+//   background-color: $backgroundColor;
+//   // opacity: 1;
+// }
+
+.dark .wrapper {
+  background-color: $backgroundColorDarkTheme;
+}
 
 .dark {
   background-color: $backgroundColorDarkTheme; /* Dark background color */
@@ -88,6 +108,11 @@ body {
 .dark .search_input::placeholder{
   color: $primaryTextColorDarkTheme;
   // opacity: 0.4;
+}
+
+.dark .wrapper__head {
+  stroke: $primaryTextColorDarkTheme;
+  fill: $primaryTextColorDarkTheme;
 }
 
 .dark .menu_mob_btn {

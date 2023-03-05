@@ -303,8 +303,11 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
 //============= перемикач теми початок ==========
 
 const themeSwitcherEl = document.querySelector('.switch_input');
-const themeSwitcher = new ThemeSwitcher(themeSwitcherEl);
+const mobileSwitcherEl = document.querySelector('.switch_input--mobile');
 
+const themeSwitcher = new ThemeSwitcher(themeSwitcherEl, mobileSwitcherEl);
+
+mobileSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
 themeSwitcherEl.addEventListener('change', themeSwitcher.onThemeToggle);
 
 themeSwitcher.renderTheme();

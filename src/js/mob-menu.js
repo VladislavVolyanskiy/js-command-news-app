@@ -22,9 +22,9 @@ oneLi.addEventListener("click", e => {
     e.preventDefault()
     if (e.currentTarget === oneLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
-        oneLi.classList.add("bg-color-active")
-        twoLi.classList.remove("bg-color-active")
-        treeLi.classList.remove("bg-color-active")
+        oneLi.classList.add("bg-color-active", "mob-link--color-active")
+        twoLi.classList.remove("bg-color-active", "mob-link--color-active")
+        treeLi.classList.remove("bg-color-active", "mob-link--color-active")
         //Добавляет бордер на Svg
         oneBorder.classList.add("wrapper__link-use")
         twoBorder.classList.remove("wrapper__link-use")
@@ -40,9 +40,9 @@ twoLi.addEventListener("click", e => {
     e.preventDefault()
     if (e.currentTarget === twoLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
-        oneLi.classList.remove("bg-color-active")
-        twoLi.classList.add("bg-color-active")
-        treeLi.classList.remove("bg-color-active")
+        oneLi.classList.remove("bg-color-active", "mob-link--color-active")
+        twoLi.classList.add("bg-color-active", "mob-link--color-active")
+        treeLi.classList.remove("bg-color-active", "mob-link--color-active")
         //Добавляет бордер на Svg
         oneBorder.classList.remove("wrapper__link-use")
         twoBorder.classList.add("wrapper__link-use")
@@ -59,9 +59,9 @@ treeLi.addEventListener("click", e => {
     e.preventDefault()
     if (e.currentTarget === treeLi) { // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
-        oneLi.classList.remove("bg-color-active")
-        twoLi.classList.remove("bg-color-active")
-        treeLi.classList.add("bg-color-active")
+        oneLi.classList.remove("bg-color-active", "mob-link--color-active")
+        twoLi.classList.remove("bg-color-active", "mob-link--color-active")
+        treeLi.classList.add("bg-color-active", "mob-link--color-active")
         //Добавляет бордер на Svg
         oneBorder.classList.remove("wrapper__link-use")
         twoBorder.classList.remove("wrapper__link-use")
