@@ -30,7 +30,9 @@ export default async function createWidget(weatherWidgetContainer) {
       <p>${day} ${month} ${fullYear}</p>
       <button class="weatherBtn" type="button">weather for week</button></div>`;
 
+    
     weatherWidgetContainer.innerHTML = markup;
+
     function onWeatherWeekBtnClick() {
       fetchWeekWeather({
         city,
@@ -38,12 +40,14 @@ export default async function createWidget(weatherWidgetContainer) {
         latitude,
         weatherWidgetContainer,
         weatherWeekBtnRef,
-        onWeatherWeekBtnClick,
+        
       });
     }
     const weatherWeekBtnRef = document.querySelector('.weatherBtn');
+
     weatherWeekBtnRef.addEventListener('click', onWeatherWeekBtnClick);
   });
+
 }
 
 async function fetchCurrentWeather() {
@@ -51,8 +55,9 @@ async function fetchCurrentWeather() {
     const position = await getCoordinates();
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-  } catch (error) {}
+  } catch (error) {console.log(error.message);}
   // получаем название города
+  
   const cityData = await axios.get(
     `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${APIKEY}`
   );
@@ -86,6 +91,7 @@ function getMonth() {
 }
 
 function getCoordinates() {
+
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
@@ -121,9 +127,10 @@ async function fetchWeekWeather({
   markupWeek += `</ul> <button class="weatherBtn" type="button">current weather</button></div>`;
   
   weatherWidgetContainer.innerHTML = markupWeek;
-
+  
   const weatherCurrentBtnRef = document.querySelector('.weatherBtn');
   weatherCurrentBtnRef.addEventListener('click', () => {
     createWidget(weatherWidgetContainer);
   });
+
 }
