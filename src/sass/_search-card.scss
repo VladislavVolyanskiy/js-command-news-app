@@ -1,0 +1,115 @@
+.card {
+  width: 100%;
+
+  @include tablet {
+    width: 353px;
+  }
+
+  &__img-container {
+    position: relative;
+  }
+
+  &__img {
+    height: 395px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__section-name {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    padding: 4px 8px;
+    background: rgba(68, 64, 247, 0.7);
+    border-radius: 0px 4px 4px 0px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #FFFFFF;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 8px;
+    bottom: 12px;
+    display:flex;
+  }
+
+  &__title {
+    margin: 20px 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.01em;
+
+    color: #111321;
+
+    @include tablet {
+      font-size: 32px;
+      line-height: 44px;
+    }
+  }
+
+  &__text {
+    margin-bottom: 20px;
+    text-align: left;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #111321;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #A8A8A8;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__read-more-search {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #4440F7;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__btn {
+    border: none;
+    background: #F4F4F4;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+
+    color: #111321;
+  }
+}
