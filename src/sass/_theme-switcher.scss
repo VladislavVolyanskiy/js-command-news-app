@@ -7,13 +7,20 @@ body {
   color: $primaryTextColor; /* Default text color */
 }
 
-.sun_btn {
+.dark .card__text,
+.dark .card__title {
+color: $primaryTextColorDarkTheme;
+}
+
+.sun_btn,
+.sun_btn--mobile {
   fill: $backgroundColor;
   stroke: $iconAccentColor;
   stroke-width: 1.3;
 }
 
-.moon_btn {
+.moon_btn,
+.moon_btn--mobile {
   fill: $backgroundColor;
   stroke: $iconStrokeColor;
   stroke-width: 1.3;
@@ -32,14 +39,34 @@ body {
   stroke: $primaryTextColor;
 }
 
+.wrapper__head {
+  stroke: $primaryTextColor;
+  fill: $primaryTextColor;
+}
+
 .menu_mob_btn {
   color: $primaryTextColor;
+  fill: $primaryTextColor;
+  stroke: $primaryTextColor;
 }
 
 .search_mob_btn {
   color: $primaryTextColor;
 }
 
+.dark .backdrop {
+  background-color: $backgroundColorDarkTheme;
+}
+
+// .mob-menu__wrapper {
+//   color: $primaryTextColor;
+//   background-color: $backgroundColor;
+//   // opacity: 1;
+// }
+
+.dark .wrapper {
+  background-color: $backgroundColorDarkTheme;
+}
 
 .dark {
   background-color: $backgroundColorDarkTheme; /* Dark background color */
@@ -57,15 +84,27 @@ body {
   color: $primaryTextColorDarkTheme;
 }
 
-.dark .sun_btn {
+.dark .sun_btn,
+.dark .sun_btn--mobile {
   fill: $backgroundColorDarkTheme;
   stroke: $iconStrokeColor;
 }
 
-.dark .moon_btn {
+// .dark .sun_btn--mobile {
+//   fill: $backgroundColorDarkTheme;
+//   stroke: $iconStrokeColor;
+// }
+
+.dark .moon_btn,
+.dark .moon_btn--mobile  {
   fill: $backgroundColorDarkTheme;
   stroke: $iconAccentColor;
 }
+
+// .dark .moon_btn--mobile {
+//   fill: $iconStrokeColor;
+//   stroke: $backgroundColorDarkTheme;
+// }
 
 .dark .switches .text_light{
   color: $primaryTextColorDarkTheme;
@@ -88,6 +127,11 @@ body {
 .dark .search_input::placeholder{
   color: $primaryTextColorDarkTheme;
   // opacity: 0.4;
+}
+
+.dark .wrapper__head {
+  stroke: $primaryTextColorDarkTheme;
+  fill: $primaryTextColorDarkTheme;
 }
 
 .dark .menu_mob_btn {
