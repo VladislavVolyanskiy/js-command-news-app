@@ -29,7 +29,6 @@ let numberOfCard = 0;
 function getSectionList(e) {
   e.preventDefault();
   newsFetchApi.fetchSectionList().then(({ data: { results } }) => {
-    console.log(results);
     results.forEach(({ section, display_name }) => {
       // деструктурував необхідні данні для розмітки.
       const sectionName = section;
@@ -75,7 +74,7 @@ function getPopularNews() {
             }
 
             // проверяем ширину экрана для расположения погоды
-            
+
             if (numberOfCard === 0) {
               markupAll += '<div class="weatherWidget"></div>';
             }
@@ -178,7 +177,7 @@ function onCategoryClick(evt) {
 
         // Блок добавления погоды
         const weatherWidgetContainer = document.querySelector('.weatherWidget');
-        console.log({ weatherWidgetContainer });
+       
         createWidget(weatherWidgetContainer);
         // Конец. Блок добавления погоды
 
@@ -212,7 +211,6 @@ function onSearchInputClick(evt) {
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
-        console.log(resultsArr);
         resultsArr.forEach(
           ({
             abstract,
@@ -273,7 +271,6 @@ function onSearchInputClick(evt) {
 
 // начало. переформатирование даты
 function publishedDateFormatter(date) {
-  
   return formatDate(new Date(date));
 }
 
@@ -307,14 +304,11 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
         delete savedData[`${clickedArticleId}`];
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
-        // console.log(savedData);
         return;
       } else {
         savedData[clickedArticleId] = article;
-        console.log(article);
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
-        // console.log(savedData);
       }
     }
   });
@@ -334,12 +328,11 @@ themeSwitcher.renderTheme();
 // Начало. Проверка на клик по Добавить в избранное
 function onAddToFavoritesClick(evt) {
   if (evt.target.className === 'card__btn') {
-   
     const clickedArticleId =
       evt.target.closest('.card')?.id ||
       evt.target.closest('.card')?.slug_name ||
       evt.target.closest('.card')?._id;
-         setFavoritesInLocalStor({
+    setFavoritesInLocalStor({
       resultsArr,
       clickedArticleId,
     });
