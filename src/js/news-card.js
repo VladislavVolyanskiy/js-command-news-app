@@ -36,7 +36,7 @@ export default function createmarkup({
             ${publishedDate}
           </span>
           <a class="card__read-more-search"
-            href="${urlOriginalArticle}"
+            href="${urlOriginalArticle}" target="_blank"
           >
             Read more
           </a>

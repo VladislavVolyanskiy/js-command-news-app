@@ -50,6 +50,7 @@ function getPopularNews() {
       resultsArr = data.results;
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
@@ -125,6 +126,7 @@ function onCategoryClick(evt) {
 
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
@@ -206,15 +208,17 @@ function onSearchInputClick(evt) {
 
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
+        console.log(resultsArr);
         resultsArr.forEach(
           ({
             abstract,
             pub_date,
             section_name,
-            title,
+            headline,
             multimedia,
             web_url,
             _id,
@@ -223,7 +227,7 @@ function onSearchInputClick(evt) {
             articleId = _id;
             publishedDate = publishedDateFormatter(pub_date);
             sectionName = section_name;
-            articleTitle = title;
+            articleTitle = headline.main;
             shortDescription = abstract;
             urlOriginalArticle = web_url;
             imgUrl = '';
@@ -295,6 +299,7 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
       article._id == clickedArticleId
     ) {
       let savedData = localStorage.getItem(STORAGE_FAVORITES_KEY);
+
       // проверка или есть уже обьект
       savedData = savedData ? JSON.parse(savedData) : {};
 
@@ -306,6 +311,7 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
         return;
       } else {
         savedData[clickedArticleId] = article;
+        console.log(article);
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
         // console.log(savedData);
@@ -327,15 +333,13 @@ themeSwitcher.renderTheme();
 
 // Начало. Проверка на клик по Добавить в избранное
 function onAddToFavoritesClick(evt) {
-  if (
-    evt.target.nodeName === 'SPAN' ||
-    evt.target.className === 'card__favorite'
-  ) {
+  if (evt.target.className === 'card__btn') {
+   
     const clickedArticleId =
-      evt.target.closest('.card__search')?.id ||
-      evt.target.closest('.card__search')?.slug_name ||
-      evt.target.closest('.card__search')?._id;
-    setFavoritesInLocalStor({
+      evt.target.closest('.card')?.id ||
+      evt.target.closest('.card')?.slug_name ||
+      evt.target.closest('.card')?._id;
+         setFavoritesInLocalStor({
       resultsArr,
       clickedArticleId,
     });
