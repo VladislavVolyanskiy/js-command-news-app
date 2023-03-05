@@ -267,9 +267,24 @@ function onSearchInputClick(evt) {
     .catch(error => console.log(error));
 }
 
+// начало. переформатирование даты
 function publishedDateFormatter(date) {
-  return new Date(date).toDateString();
+  
+  return formatDate(new Date(date));
 }
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getDate()),
+    padTo2Digits(date.getMonth() + 1),
+    date.getFullYear(),
+  ].join('/');
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+// конецю переформатирование даты
 
 //===добавляет избранное в локальное хранилище ==========
 function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
