@@ -5,6 +5,10 @@
     width: 353px;
   }
 
+  @include desktop {
+    width: 395px;
+  }
+
   &__img-container {
     position: relative;
   }
