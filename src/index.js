@@ -4,6 +4,7 @@ import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
 import createWidget from './js/weatherApi';
+import calendar from './js/calendar';
 
 const newsContainerRef = document.querySelector('.news_container');
 const body = document.querySelector('body');
