@@ -25,21 +25,16 @@ export default function createmarkup({
           </p>
           <button class="card__btn" type="button">
             Add to favorite
-            <svg class="card__btn-icon-unclicked">
-              <use href="./images/symbol-defs.svg#icon-icon-heart"></use>
-            </svg>
           </button>
         </div>
         <h2 class="card__title">
           ${articleTitle}
         </h2>
-        <p class="card__text">
-          ${shortDescription}
-        </p>
-        <div class"card__bottom>
-          <p class="card__date">
+        <p class="card__text">${shortDescription}</p>
+        <div class="card__bottom">
+          <span class="card__date">
             ${publishedDate}
-          </p>
+          </span>
           <a class="card__read-more-search"
             href="${urlOriginalArticle}"
           >
