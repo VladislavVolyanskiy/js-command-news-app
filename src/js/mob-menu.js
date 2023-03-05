@@ -18,9 +18,13 @@ const svgItem = document.querySelector(".svg-item")
 
 
 // Ссылка Home
-oneLi.addEventListener("click", e => {
-    
-    if (e.currentTarget === oneLi) { // Проверка на что нажал пользователь
+oneLi.addEventListener("click", checkOne)
+twoLi.addEventListener("click", checkTwo)
+treeLi.addEventListener("click", checkTree)
+
+// Ссылка Home
+function checkOne(){
+        // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.add("bg-color-active", "mob-link--color-active")
         twoLi.classList.remove("bg-color-active", "mob-link--color-active")
@@ -33,12 +37,11 @@ oneLi.addEventListener("click", e => {
         rigthSvgOne.style.display = "inherit"
         rigthSvgTwo.style.display = "none"
         rigthSvgTree.style.display = "none"
+        
     }
-})
 // Ссылка Favorite
-twoLi.addEventListener("click", e => {
-    
-    if (e.currentTarget === twoLi) { // Проверка на что нажал пользователь
+function checkTwo(){
+        // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active", "mob-link--color-active")
         twoLi.classList.add("bg-color-active", "mob-link--color-active")
@@ -53,11 +56,10 @@ twoLi.addEventListener("click", e => {
         rigthSvgTree.style.display = "none"
     }
 
-})
-// Ссылка Read
-treeLi.addEventListener("click", e => {
 
-    if (e.currentTarget === treeLi) { // Проверка на что нажал пользователь
+// Ссылка Read
+function checkTree() {
+        // Проверка на что нажал пользователь
         // Код ниже заменяет классы добавляя где нужно и где не нужно удаляет
         oneLi.classList.remove("bg-color-active", "mob-link--color-active")
         twoLi.classList.remove("bg-color-active", "mob-link--color-active")
@@ -70,9 +72,8 @@ treeLi.addEventListener("click", e => {
         rigthSvgOne.style.display = "none"
         rigthSvgTwo.style.display = "none"
         rigthSvgTree.style.display = "inherit"
-    }
 
-})
+}
 //--------------Closed modal----------------
 // Тут думаю понятно, просто закрывает модалку
 const closeModal = document.querySelector(".close")
@@ -88,3 +89,21 @@ modal.addEventListener("click", e => {
     backdrop.classList.remove("is-hidden")
     document.body.style.overflow = 'hidden';
 })
+
+function checkUrl() {
+    if (window.location.href === "http://localhost:1234/index.html") {
+        checkOne()
+    }
+    else if (window.location.href  === "http://localhost:1234/favorite.html") {
+
+        checkTwo()
+    }
+    else if (window.location.href === "http://localhost:1234/read.html") {
+
+        checkTree()
+    }
+    else {
+        return
+    }
+}
+checkUrl()
