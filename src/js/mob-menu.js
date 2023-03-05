@@ -86,4 +86,5 @@ const modal = document.querySelector(".menu_mob_btn")
 
 modal.addEventListener("click", e => {
     backdrop.classList.remove("is-hidden")
+    document.body.style.overflow = 'hidden';
 })
