@@ -7,6 +7,11 @@ body {
   color: $primaryTextColor; /* Default text color */
 }
 
+.dark .card__text,
+.dark .card__title {
+color: $primaryTextColorDarkTheme;
+}
+
 .sun_btn,
 .sun_btn--mobile {
   fill: $backgroundColor;
