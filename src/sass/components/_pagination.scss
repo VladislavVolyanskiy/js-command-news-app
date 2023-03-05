@@ -87,7 +87,8 @@
 .pagination_svg {
   width: 6px;
   height: 8px;
-  fill:#111321;
+
+fill:#111321;
 }
 @media screen and (min-width: 480px) {
     .pagination_svg {
@@ -96,6 +97,8 @@
     }
   }
 .pag-arrow {
+    display: flex;
+  flex-direction: row;
   width: 72px;
   height: 28px;
   margin-right: 8px;
