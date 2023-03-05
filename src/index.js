@@ -4,6 +4,7 @@ import NewsFetchApi from './js/newsApi';
 import onSearchClick from './js/header';
 import { ThemeSwitcher } from './js/themeSwitcher';
 import createWidget from './js/weatherApi';
+import calendar from './js/calendar';
 
 const newsContainerRef = document.querySelector('.news_container');
 const body = document.querySelector('body');
@@ -29,7 +30,6 @@ let numberOfCard = 0;
 function getSectionList(e) {
   e.preventDefault();
   newsFetchApi.fetchSectionList().then(({ data: { results } }) => {
-    console.log(results);
     results.forEach(({ section, display_name }) => {
       // деструктурував необхідні данні для розмітки.
       const sectionName = section;
@@ -50,6 +50,7 @@ function getPopularNews() {
       resultsArr = data.results;
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
@@ -74,7 +75,7 @@ function getPopularNews() {
             }
 
             // проверяем ширину экрана для расположения погоды
-            
+
             if (numberOfCard === 0) {
               markupAll += '<div class="weatherWidget"></div>';
             }
@@ -125,6 +126,7 @@ function onCategoryClick(evt) {
 
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
@@ -176,7 +178,7 @@ function onCategoryClick(evt) {
 
         // Блок добавления погоды
         const weatherWidgetContainer = document.querySelector('.weatherWidget');
-        console.log({ weatherWidgetContainer });
+       
         createWidget(weatherWidgetContainer);
         // Конец. Блок добавления погоды
 
@@ -206,6 +208,7 @@ function onSearchInputClick(evt) {
 
       // проверка если нету новостей.
       if (resultsArr.length === 0) {
+        newsContainerRef.innerHTML = '';
         document.querySelector('.without-news_container').style.display =
           'block';
       } else {
@@ -214,7 +217,7 @@ function onSearchInputClick(evt) {
             abstract,
             pub_date,
             section_name,
-            title,
+            headline,
             multimedia,
             web_url,
             _id,
@@ -223,7 +226,7 @@ function onSearchInputClick(evt) {
             articleId = _id;
             publishedDate = publishedDateFormatter(pub_date);
             sectionName = section_name;
-            articleTitle = title;
+            articleTitle = headline.main;
             shortDescription = abstract;
             urlOriginalArticle = web_url;
             imgUrl = '';
@@ -267,9 +270,23 @@ function onSearchInputClick(evt) {
     .catch(error => console.log(error));
 }
 
+// начало. переформатирование даты
 function publishedDateFormatter(date) {
-  return new Date(date).toDateString();
+  return formatDate(new Date(date));
 }
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getDate()),
+    padTo2Digits(date.getMonth() + 1),
+    date.getFullYear(),
+  ].join('/');
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+// конецю переформатирование даты
 
 //===добавляет избранное в локальное хранилище ==========
 function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
@@ -280,6 +297,7 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
       article._id == clickedArticleId
     ) {
       let savedData = localStorage.getItem(STORAGE_FAVORITES_KEY);
+
       // проверка или есть уже обьект
       savedData = savedData ? JSON.parse(savedData) : {};
 
@@ -287,13 +305,11 @@ function setFavoritesInLocalStor({ resultsArr, clickedArticleId }) {
         delete savedData[`${clickedArticleId}`];
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
-        // console.log(savedData);
         return;
       } else {
         savedData[clickedArticleId] = article;
 
         localStorage.setItem(STORAGE_FAVORITES_KEY, JSON.stringify(savedData));
-        // console.log(savedData);
       }
     }
   });
@@ -315,14 +331,11 @@ themeSwitcher.renderTheme();
 
 // Начало. Проверка на клик по Добавить в избранное
 function onAddToFavoritesClick(evt) {
-  if (
-    evt.target.nodeName === 'SPAN' ||
-    evt.target.className === 'card__favorite'
-  ) {
+  if (evt.target.className === 'card__btn') {
     const clickedArticleId =
-      evt.target.closest('.card__search')?.id ||
-      evt.target.closest('.card__search')?.slug_name ||
-      evt.target.closest('.card__search')?._id;
+      evt.target.closest('.card')?.id ||
+      evt.target.closest('.card')?.slug_name ||
+      evt.target.closest('.card')?._id;
     setFavoritesInLocalStor({
       resultsArr,
       clickedArticleId,

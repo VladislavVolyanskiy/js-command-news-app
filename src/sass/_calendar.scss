@@ -1,0 +1,194 @@
+.list {
+    list-style: none;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+.date-field {
+    display: block;
+    display: flex;
+    width: 151px;
+    height: 31px;
+    border: 1px solid #111321;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 12px;
+}
+
+
+.data_selected {
+    display: block;
+    max-width: 66px;
+    height: 21px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #111321;
+    opacity: 0.4;
+}
+
+.calendar_open_icon{
+    fill: #A2A2A2;
+}
+
+.calendar_close_icon{
+    fill: #FFFFFF;
+}
+
+.calendar_icon{
+    fill: #4440F7;
+   
+}
+
+.btn_calendar_open {
+    display: block;
+    width: 20px;
+    height: 17px;
+    background-color: transparent;
+    border: transparent;
+}
+
+.btn_calendar_close {
+    display: none;
+    width: 20px;
+    height: 17px;
+    background-color: transparent;
+    border: transparent;
+}
+
+.calendar-box{
+    position: relative;
+}
+
+.calendar {
+    position: absolute;
+    width: 250px;
+    min-height: 250px;
+    background-color: #F8F8F8;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 15px 16px 15px;
+    z-index: 2;
+}
+
+.calendar_month_next {
+    transform: rotate(90deg);
+    margin-left: 8px;
+    margin-right: auto;
+    fill: #4440F6;
+}
+
+.calendar_year_next {
+    transform: rotate(90deg);
+    fill: #4440F6;
+}
+
+.calendar_year_back {
+    transform: rotate(-90deg);
+    margin-right: 33px;
+    fill: #4440F6;
+}
+
+.calendar_title {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.current_month,
+.current_year {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.38;
+    color: #000000;
+}
+
+.current_month {
+    margin-right: 5px;
+}
+
+.week_days {
+    display: flex;
+    gap: 17px;
+    justify-content: space-around;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(60, 60, 67, 0.3);
+    margin-top: 10px;
+
+}
+
+.days {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 17px;
+    margin-top: 10px;
+    justify-content: space-around;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.79;
+    text-align: center;
+    color: #000000;;
+    letter-spacing: 0.38px;
+}
+
+.days li {
+    display: flex;
+    width: calc(100% / 14);
+    height: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.previous,
+.next {
+    color: #5F6775;
+}
+
+.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+@media screen and (min-width: 768px) {
+    .date-field{
+        width: 168px;
+    }
+}
+
+.days li:focus, .days li:hover {
+
+    color: #FFFFFF;
+    background-color: #4440F7;
+    border-radius: 50%;
+    outline: 5px solid #4440F7;
+
+}
