@@ -132,8 +132,9 @@ function onCloseCalendar() {
 
 days.addEventListener("click", onDateSelection);
 
-function onDateSelection() {
-    dataSelected.textContent = `${addLeadingZero(currDate)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+function onDateSelection(event) {
+
+    dataSelected.textContent = `${addLeadingZero(event.target.textContent)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
     onCloseCalendar();
   
 }
