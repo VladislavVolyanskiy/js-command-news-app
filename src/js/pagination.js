@@ -14,12 +14,27 @@ function resetCurrentPage() {
 }
 
 // главная функция для рендера pagination. Callback - функция для работы с fetch (зависит от раздела, где рисуем pagination)
-export function renderPagination(totalPages, listItems, callback, searchQuery) {
+export function renderPagination(totalNews, listItems, callback, searchQuery) {
   paginationElement.innerHTML = '';
   resetCurrentPage();
   arrowLeft.removeEventListener('click', onArrowLeftClick);
   arrowRight.removeEventListener('click', onArrowRightClick);
+const totalNews = 20
+  if (innerWidth < 768) {
+    const newsPerPage = totalNews / 4;
+  } else
+  if (innerWidth < 1280) {
+    const newsPerPage = totalNews / 7;
+  } else
+  {
+    const newsPerPage = totalNews / 8;
+  }
+  
+  const pages = Math.floor(totalNews / newsPerPage)
 
+  return newsPerPage
+  
+   
   function setupPagination(items, wrapper) {
     wrapper.innerHTML = '';
 
