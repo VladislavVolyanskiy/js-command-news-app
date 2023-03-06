@@ -14,6 +14,8 @@ const btnCalendarClose = document.querySelector(".btn_calendar_close");
 const days = document.querySelector(".days");
 const calendar = document.querySelector(".calendar");
 const iconCalendar = document.querySelector(".calendar_icon");
+const calendarBox = document.querySelector(".calendar-box");
+
 
 
 // -----вибір місяця і року
@@ -37,9 +39,19 @@ function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 };
 
-// localStorage.setItem("date", "light");
 
-// -----вибір місяця і року
+// -------запис в Локалсторідж
+localStorage.removeItem("data_select");
+
+const formData = {
+    day: addLeadingZero(currDate),
+    month: addLeadingZero(currMonth + 1),
+    year: currYear,
+};
+
+localStorage.setItem("data_select", JSON.stringify(formData));
+
+// -----вибір і додавання в поле календаря місяця і року
 
 monthNext.addEventListener("click", onNextMonth);
 monthDown.addEventListener("click", onDownMonth)
@@ -60,8 +72,11 @@ function onNextMonth() {
     
     mainAsync();
 
-    dataSelected.textContent = `${addLeadingZero(currDate)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
-   
+    dataSelected.textContent = `${addLeadingZero(formData.day)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+
+    formData.month = addLeadingZero(months.indexOf(month.textContent) + 1);
+       
+   localStorage.setItem("data_select", JSON.stringify(formData));
 }
 
 function onDownMonth() {
@@ -77,7 +92,11 @@ function onDownMonth() {
     
     mainAsync(); 
 
-    dataSelected.textContent = `${addLeadingZero(currDate)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+    dataSelected.textContent = `${addLeadingZero(formData.day)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+
+    formData.month = addLeadingZero(months.indexOf(month.textContent) + 1);
+
+    localStorage.setItem("data_select", JSON.stringify(formData));
     
 }
 
@@ -87,7 +106,11 @@ function onNextYear() {
 
     mainAsync();
 
-    dataSelected.textContent = `${addLeadingZero(currDate)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+    dataSelected.textContent = `${addLeadingZero(formData.day)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+
+    formData.year = year.textContent;
+
+    localStorage.setItem("data_select", JSON.stringify(formData));
    
 }
 
@@ -97,13 +120,38 @@ function onBackYear() {
 
     mainAsync();
 
-    dataSelected.textContent = `${addLeadingZero(currDate)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+    dataSelected.textContent = `${addLeadingZero(formData.day)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+
+    formData.year = year.textContent;
+
+    localStorage.setItem("data_select", JSON.stringify(formData));
    
 }
 
+// -------додавання дати в поле календаря
+
+
+days.addEventListener("click", onDateSelection);
+
+function onDateSelection(event) {  
+    
+    const cls = event.target.classList.contains('current');
+    
+    if (!cls) {
+        alert("Select the date of the current month!");
+        return;
+    }
+    
+    formData.day = addLeadingZero(event.target.textContent);
+
+    localStorage.setItem("data_select", JSON.stringify(formData)); 
+
+    dataSelected.textContent = `${addLeadingZero(event.target.textContent)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
+  
+    onCloseCalendar(); 
+}
+
 // --------рендер днів
-
-
 
  async function mainAsync() {
     const data = new Date(Number(year.textContent), months.indexOf(month.textContent));
@@ -138,9 +186,9 @@ function onOpenCalendar() {
     btnCalendarOpen.style.display = "none";
 
     dataSelected.style.color = "#FFFFFF";
+    dataSelected.style.opacity = '1';
     dateField.style.backgroundColor = "#4440F6";
-    iconCalendar.style.fill = "#FFFFFF";
-   
+    iconCalendar.style.fill = "#FFFFFF";   
 
 }
 
@@ -148,6 +196,8 @@ btnCalendarClose.addEventListener("click", onCloseCalendar);
 
 function onCloseCalendar() {
     calendar.classList.toggle('visually-hidden');
+
+    calendar.style.transform = "translateY(-100%)";
    
     btnCalendarClose.style.display = "none";
     btnCalendarOpen.style.display = "block";
@@ -158,19 +208,17 @@ function onCloseCalendar() {
     iconCalendar.style.fill = "#4440F7";
 }
 
-// -------додавання дати в поле календаря
 
-
-days.addEventListener("click", onDateSelection);
-
-function onDateSelection(event) {
-
-    dataSelected.textContent = `${addLeadingZero(event.target.textContent)}/${addLeadingZero(months.indexOf(month.textContent) + 1)}/${year.textContent}`;
-    
-    onCloseCalendar();
-
-}
 
 // -------колір поточної дати
 
+// function currentColor() {
+    
+// }
 
+
+
+
+
+
+//    formData.day, formData.month, formData.year  для даних дня місяця і року

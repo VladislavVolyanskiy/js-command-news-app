@@ -83,7 +83,6 @@ li {
 
     top: 31px;
     left: 0;
-    transform: translateY(-100%);
     transition-property: transform;
     transition-duration: 1s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -165,13 +164,12 @@ li {
     letter-spacing: 0.38px;
 }
 
-.days li {
+.days li {   
     display: flex;
     width: calc(100% / 14);
     height: 15px;
     align-items: center;
-    justify-content: center;
-
+    justify-content: center;    
 }
 
 .previous,
@@ -192,6 +190,7 @@ li {
     -webkit-clip-path: inset(50%);
     clip-path: inset(50%);
     margin: -1px;
+    transform: translateY(-100%);
 }
 
 @media screen and (min-width: 768px) {
