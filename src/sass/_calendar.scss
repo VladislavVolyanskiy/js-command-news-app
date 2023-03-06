@@ -9,6 +9,7 @@ li {
 }
 
 .date-field {
+    position: absolute;
     display: block;
     display: flex;
     width: 151px;
@@ -18,6 +19,7 @@ li {
     align-items: center;
     justify-content: space-between;
     padding: 5px 12px;
+    z-index: 11;    
 }
 
 
@@ -66,6 +68,7 @@ li {
 
 .calendar-box{
     position: relative;
+   
 }
 
 .calendar {
@@ -77,13 +80,25 @@ li {
     border-radius: 20px;
     padding: 15px 16px 15px;
     z-index: 2;
+
+    top: 31px;
+    left: 0;
+    transform: translateY(-100%);
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .calendar_month_next {
     transform: rotate(90deg);
     margin-left: 8px;
-    margin-right: auto;
+    margin-right: 8px;
     fill: #4440F6;
+}
+.calendar_month_down{
+    transform: rotate(-90deg);
+    fill: #4440F6;
+    margin-right: 8px;
 }
 
 .calendar_year_next {
@@ -93,7 +108,7 @@ li {
 
 .calendar_year_back {
     transform: rotate(-90deg);
-    margin-right: 33px;
+    margin-right: 25px;
     fill: #4440F6;
 }
 
@@ -101,7 +116,7 @@ li {
     display: block;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .current_month,
@@ -162,6 +177,7 @@ li {
 .previous,
 .next {
     color: #5F6775;
+    opacity: 0.7;
 }
 
 .visually-hidden {
@@ -190,5 +206,6 @@ li {
     background-color: #4440F7;
     border-radius: 50%;
     outline: 5px solid #4440F7;
-
+    cursor: pointer;
 }
+
