@@ -71,7 +71,7 @@ function getPopularNews() {
               //   якщо треба інший розмір картинки
               // console.log(media[0]['media-metadata']);
             } catch (error) {
-              imgUrl = 'Тут ссылку на заглушку';
+              imgUrl = "https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
             }
 
             // проверяем ширину экрана для расположения погоды
@@ -153,7 +153,7 @@ function onCategoryClick(evt) {
               //   якщо треба інший розмір картинки
               // console.log(media[0]['media-metadata']);
             } catch (error) {
-              imgUrl = 'Тут ссылку на заглушку';
+              imgUrl = "https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
             }
             if (numberOfCard === 0) {
               markupAll += '<div class="weatherWidget"></div>';
@@ -235,7 +235,7 @@ function onSearchInputClick(evt) {
               //   якщо треба інший розмір картинки
               // console.log(media[0]['media-metadata']);
             } catch (error) {
-              imgUrl = 'Тут ссылку на заглушку';
+              imgUrl = "https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg";
             }
             if (numberOfCard === 0) {
               markupAll += '<div class="weatherWidget"></div>';
@@ -254,6 +254,8 @@ function onSearchInputClick(evt) {
         );
         newsContainerRef.innerHTML = markupAll;
         markupAll = '';
+
+        
 
         // Блок добавления погоды
         const weatherWidgetContainer = document.querySelector('.weatherWidget');
