@@ -83,9 +83,8 @@ li {
 
     top: 31px;
     left: 0;
-    transform: translateY(-100%);
     transition-property: transform;
-    transition-duration: 1s;
+    transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -127,6 +126,8 @@ li {
     font-size: 16px;
     line-height: 1.38;
     color: #000000;
+    letter-spacing: -0.408px;
+    font-feature-settings: 'case' on;
 }
 
 .current_month {
@@ -145,14 +146,17 @@ li {
     text-align: center;
     color: rgba(60, 60, 67, 0.3);
     margin-top: 10px;
+}
 
+.week_days li{
+    min-width: 15px;
 }
 
 .days {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
-    gap: 17px;
+    gap: 12px;
     margin-top: 10px;
     justify-content: space-around;
     font-family: 'Manrope';
@@ -165,13 +169,14 @@ li {
     letter-spacing: 0.38px;
 }
 
-.days li {
+.days li {   
     display: flex;
-    width: calc(100% / 14);
-    height: 15px;
+    // width: calc(100% / 14);
+    // height: 15.56px;
     align-items: center;
-    justify-content: center;
-
+    justify-content: center;  
+    width: 20px; 
+    height: 20px; 
 }
 
 .previous,
@@ -192,6 +197,7 @@ li {
     -webkit-clip-path: inset(50%);
     clip-path: inset(50%);
     margin: -1px;
+    transform: translateY(-100%);
 }
 
 @media screen and (min-width: 768px) {
@@ -205,7 +211,16 @@ li {
     color: #FFFFFF;
     background-color: #4440F7;
     border-radius: 50%;
-    outline: 5px solid #4440F7;
     cursor: pointer;
+    border: 10px solid #4440F7;
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.today{
+    color: #FFFFFF;
+    background-color: #4440F7;
+    border-radius: 50%;
+    border: 10px solid #4440F7;
+}
