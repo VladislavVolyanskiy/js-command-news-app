@@ -43,7 +43,7 @@ export function fetchDataOfSearchNews(searchQuery) {
 
 
 // главная функция для рендера pagination. Callback - функция для работы с fetch (зависит от раздела, где рисуем pagination)
-export function renderPagination(totalNews, listItems, callback, searchQuery) {
+export function renderPagination(totalPages, listItems, callback, searchQuery) {
   paginationElement.innerHTML = '';
   resetCurrentPage();
   arrowLeft.removeEventListener('click', onArrowLeftClick);
