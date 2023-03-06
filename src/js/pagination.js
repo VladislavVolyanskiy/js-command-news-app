@@ -1,9 +1,8 @@
 //Добавить в следующее поле отсыл к карточке новостей
-const listElement = document.querySelector('.news_container');
+const listElement = document.querySelector('.js-card');
 const paginationElement = document.getElementById('pagination');
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
-const newsFetchApi = new NewsFetchApi();
 
 let currentPage = 1;
 let pageCount;
@@ -14,52 +13,12 @@ function resetCurrentPage() {
   currentPage = 1;
 }
 
-export function fetchDataOfPopularNews() {
-  newsFetchApi
-    .fetchPopularArticlesPages()
-    .then(results => {
-      renderPagination(results.total_pages, results.results, displayList);
-    })
-    }
-
-export function fetchDataOfSearchNews(searchQuery) {
- 
-  newsFetchApi.query = searchQuery;
-
-  newsFetchApi.fetchSearchArticlesPages().then(results => {
-    renderPagination(
-      results.total_pages,
-      results.results,
-      displaySearchListByPage,
-      searchQuery
-    );
-    if (results.total_pages === 0) {
-      refs.searchResField.textContent = '';
-      cardFetch.fetchDataOfPopularNews();
-      return;
-    }
-  });
-}
-
-
 // главная функция для рендера pagination. Callback - функция для работы с fetch (зависит от раздела, где рисуем pagination)
 export function renderPagination(totalPages, listItems, callback, searchQuery) {
   paginationElement.innerHTML = '';
   resetCurrentPage();
   arrowLeft.removeEventListener('click', onArrowLeftClick);
   arrowRight.removeEventListener('click', onArrowRightClick);
-  // const totalNews = 20;
-  // if (innerWidth < 768) {
-  //   const newsPerPage = totalNews / 4;
-  // } else if (innerWidth < 1280) {
-  //   const newsPerPage = totalNews / 7;
-  // } else {
-  //   const newsPerPage = totalNews / 8;
-  // }
-
-  // const pages = Math.ceil(totalNews / newsPerPage);
-
-  // return newsPerPage;
 
   function setupPagination(items, wrapper) {
     wrapper.innerHTML = '';
@@ -102,7 +61,9 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
         let btn = paginationButton(i, items);
         wrapper.appendChild(btn);
       }
+    
     }
+
   }
 
   // создает троеточия для pagination
@@ -120,6 +81,8 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
     if (currentPage == page) button.classList.add('active');
 
     button.addEventListener('click', function () {
+      
+      
       window.scrollTo({ top: 0, behavior: 'smooth' });
       currentPage = page;
       callback(listElement, currentPage, searchQuery);
@@ -152,7 +115,7 @@ export function renderPagination(totalPages, listItems, callback, searchQuery) {
   // ф-кция для отслеживания кликов по стрелке вправо
   function onArrowRightClick() {
     if (currentPage < totalPages) {
-      placeholder.spinner.show();
+      
       window.scrollTo({ top: 0, behavior: 'smooth' });
       currentPage++;
       setupPagination(listItems, paginationElement, rows);
