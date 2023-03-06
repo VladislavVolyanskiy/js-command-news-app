@@ -14,8 +14,10 @@ const btnCalendarClose = document.querySelector(".btn_calendar_close");
 const days = document.querySelector(".days");
 const calendar = document.querySelector(".calendar");
 const iconCalendar = document.querySelector(".calendar_icon");
-const calendarBox = document.querySelector(".calendar-box");
 
+
+//    formData.day, formData.month, formData.year  для даних дня місяця і року
+//  "data_select"   ключ в Локалсторідж
 
 
 // -----вибір місяця і року
@@ -135,13 +137,14 @@ days.addEventListener("click", onDateSelection);
 
 function onDateSelection(event) {  
     
-    const cls = event.target.classList.contains('current');
+    const classCurrent = event.target.classList.contains('current');
+    const classToday = event.target.classList.contains('today');
     
-    if (!cls) {
+    if (!classCurrent && !classToday) {
         alert("Select the date of the current month!");
         return;
     }
-    
+ 
     formData.day = addLeadingZero(event.target.textContent);
 
     localStorage.setItem("data_select", JSON.stringify(formData)); 
@@ -157,10 +160,19 @@ function onDateSelection(event) {
     const data = new Date(Number(year.textContent), months.indexOf(month.textContent));
 
     const mayDates = await calendarDates.getDates(data);
-    console.log(mayDates);
-
-    createMarkup(mayDates);
+    // console.log(mayDates);  
     
+     // -------колір поточної дати
+
+      mayDates.map(e => {
+          
+         if (e.iso === `${dates.getFullYear()}-${addLeadingZero(dates.getMonth() + 1)}-${addLeadingZero(dates.getDate())}`) {
+             e.type = "today";
+         }        
+     });
+
+    createMarkup(mayDates); 
+        
 };
 mainAsync();
 
@@ -171,6 +183,7 @@ function createMarkup(mayDates) {
     }).join('');
 
     days.innerHTML = markup;
+
 }
 
 // ---------відкриття і закриття календаря---------
@@ -188,8 +201,7 @@ function onOpenCalendar() {
     dataSelected.style.color = "#FFFFFF";
     dataSelected.style.opacity = '1';
     dateField.style.backgroundColor = "#4440F6";
-    iconCalendar.style.fill = "#FFFFFF";   
-
+    iconCalendar.style.fill = "#FFFFFF";     
 }
 
 btnCalendarClose.addEventListener("click", onCloseCalendar);
@@ -210,15 +222,8 @@ function onCloseCalendar() {
 
 
 
-// -------колір поточної дати
-
-// function currentColor() {
-    
-// }
 
 
 
 
 
-
-//    formData.day, formData.month, formData.year  для даних дня місяця і року
