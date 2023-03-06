@@ -23,7 +23,7 @@ export default function createmarkup({
       }
 
   return `
-      <li><article class="card" id="${articleId}">
+      <article class="card" id="${articleId}">
         <div class="card__img-container">
           <img class="card__img" src="${imgUrl}" alt="${articleTitle}">
           <p class="card__section-name">
@@ -47,7 +47,7 @@ export default function createmarkup({
             Read more
           </a>
         </div>
-      </article></li>
+      </article>
     `;
 };
   
