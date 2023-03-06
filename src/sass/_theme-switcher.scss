@@ -7,10 +7,6 @@ body {
   color: $primaryTextColor; /* Default text color */
 }
 
-.dark .card__text,
-.dark .card__title {
-color: $primaryTextColorDarkTheme;
-}
 
 .sun_btn,
 .sun_btn--mobile {
@@ -73,6 +69,11 @@ color: $primaryTextColorDarkTheme;
   color: $primaryTextColorDarkTheme; /* Light text color */
 }
 
+.dark .card__text,
+.dark .card__title {
+color: $primaryTextColorDarkTheme;
+}
+
 .dark .link {
   background-color: $backgroundColorDarkTheme; /* Dark background color */
   color: $primaryTextColorDarkTheme;
@@ -129,6 +130,15 @@ color: $primaryTextColorDarkTheme;
   // opacity: 0.4;
 }
 
+.dark .date-field {
+  border-color: $backgroundColor;
+}
+
+.dark .data_selected {
+  color: #F4F4F4; 
+  opacity: 0.4;
+}
+
 .dark .wrapper__head {
   stroke: $primaryTextColorDarkTheme;
   fill: $primaryTextColorDarkTheme;
@@ -142,4 +152,8 @@ color: $primaryTextColorDarkTheme;
 .dark .search_mob_btn {
   fill: $primaryTextColorDarkTheme;
   stroke: $primaryTextColorDarkTheme;
+}
+
+.dark .pagination__container_pages {
+  color: $primaryTextColor;
 }
