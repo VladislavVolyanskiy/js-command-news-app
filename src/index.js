@@ -45,6 +45,7 @@ function getPopularNews() {
   newsFetchApi
     .fetchPopularNews()
     .then(({ data }) => {
+      console.log(data);
       //   загальна кількість знайдених новин
       totalNews = data.num_results;
       resultsArr = data.results;
@@ -198,6 +199,10 @@ function onSearchInputClick(evt) {
   evt.preventDefault();
   //  значення пошукового запиту
   newsFetchApi.searchQuery = evt.target.elements.searchQuery.value;
+  localStorage.setItem(
+    'searchQuery',
+    JSON.stringify(evt.target.elements.searchQuery.value)
+  );
 
   newsFetchApi
     .fetchBySearchQuery()
